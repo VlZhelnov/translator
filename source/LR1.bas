@@ -61,65 +61,7 @@ Sub analize(ByRef src_str As Object, ByRef parseTable As Object, _
    
 End Sub
 
-'Функции для генерации таблицы разбора
-
-Function closure(ByVal set_items As Object, ByRef grammar As Object, ByRef first_set As Object, ByRef follow_set As Object) As Object
-    Dim n_item As Long: Set closure = set_items
-    Dim next_symbol, point_sympol As String, next_point As Variant
-    Dim products As Object: Set products = grammar("products")
-    Dim point_position As Integer, tmp_point As String
-    Dim d As Object: Set d = dict()
-    While True
-        tmp_point = set_items(n_item)(right)
-        point_position = InStr(1, tmp_point, ".")
-        If point_position <> Len(tmp_point) Then
-            point_symbol = Split(Split(tmp_point, ".")(1), " ")(0)
-            If products.exists(point_symbol) Then
-                If UBound(products.item(point_symbol)) = -1 Then
-                    For Each term In follow_set.item(point_symbol)
-                        next_point = Array(point_symbol, ".", term)
-                        If check(set_items, next_point) Then dict_append set_items, next_point
-                    Next
-                Else
-                    For Each product In products.item(point_symbol)
-                        If point_position + Len(point_symbol) = Len(tmp_point) Then
-                            next_point = Array(point_symbol, "." & product, set_items(n_item)(lookahead))
-                            If check(set_items, next_point) Then dict_append set_items, next_point
-                        Else
-                            next_symbol = Split(Split(tmp_point, ".")(1), " ")(1)
-                            Set d = dict()
-                            For Each term In first_set.item(next_symbol)
-                                d.item(term) = Null
-                            Next
-                            If follow_set.exists(next_symbol) Then
-                                For Each term In follow_set.item(next_symbol)
-                                    d.item(term) = Null
-                                Next
-                            End If
-                            For Each term In d.keys
-                                next_point = Array(point_symbol, "." & product, term)
-                                If check(set_items, next_point) Then dict_append set_items, next_point
-                            Next
-                        End If
-                    Next
-                End If
-            End If
-        End If
-        If n_item = set_items.Count() - 1 Then Exit Function
-        n_item = n_item + 1
-    Wend
-
-End Function
-
-Function check(ByRef set_items As Object, ByRef item As Variant) As Boolean
-    Dim i As Variant: check = True
-    For Each i In set_items.items()
-        If to_str(item) = to_str(i) Then
-            check = False: Exit Function
-        End If
-    Next
-End Function
-
+'Р¤СѓРЅРєС†РёРё РґР»СЏ РіРµРЅРµСЂР°С†РёРё С‚Р°Р±Р»РёС†С‹ СЂР°Р·Р±РѕСЂР°
 
 Function CreateTable(ByRef grammar As Object, Optional create_info_file = False) As Object
 
@@ -246,6 +188,64 @@ Sub nullable(ByVal nterm As String, ByRef grammar As Object, ByRef memory As Obj
     End If
     
 End Sub
+
+Function closure(ByVal set_items As Object, ByRef grammar As Object, ByRef first_set As Object, ByRef follow_set As Object) As Object
+    Dim n_item As Long: Set closure = set_items
+    Dim next_symbol, point_sympol As String, next_point As Variant
+    Dim products As Object: Set products = grammar("products")
+    Dim point_position As Integer, tmp_point As String
+    Dim d As Object: Set d = dict()
+    While True
+        tmp_point = set_items(n_item)(right)
+        point_position = InStr(1, tmp_point, ".")
+        If point_position <> Len(tmp_point) Then
+            point_symbol = Split(Split(tmp_point, ".")(1), " ")(0)
+            If products.exists(point_symbol) Then
+                If UBound(products.item(point_symbol)) = -1 Then
+                    For Each term In follow_set.item(point_symbol)
+                        next_point = Array(point_symbol, ".", term)
+                        If check(set_items, next_point) Then dict_append set_items, next_point
+                    Next
+                Else
+                    For Each product In products.item(point_symbol)
+                        If point_position + Len(point_symbol) = Len(tmp_point) Then
+                            next_point = Array(point_symbol, "." & product, set_items(n_item)(lookahead))
+                            If check(set_items, next_point) Then dict_append set_items, next_point
+                        Else
+                            next_symbol = Split(Split(tmp_point, ".")(1), " ")(1)
+                            Set d = dict()
+                            For Each term In first_set.item(next_symbol)
+                                d.item(term) = Null
+                            Next
+                            If follow_set.exists(next_symbol) Then
+                                For Each term In follow_set.item(next_symbol)
+                                    d.item(term) = Null
+                                Next
+                            End If
+                            For Each term In d.keys
+                                next_point = Array(point_symbol, "." & product, term)
+                                If check(set_items, next_point) Then dict_append set_items, next_point
+                            Next
+                        End If
+                    Next
+                End If
+            End If
+        End If
+        If n_item = set_items.Count() - 1 Then Exit Function
+        n_item = n_item + 1
+    Wend
+
+End Function
+
+Function check(ByRef set_items As Object, ByRef item As Variant) As Boolean
+    Dim i As Variant: check = True
+    For Each i In set_items.items()
+        If to_str(item) = to_str(i) Then
+            check = False: Exit Function
+        End If
+    Next
+End Function
+
 Function first(ByVal s As String, ByRef grammar As Object, ByRef nmemory As Object) As Object
 
     Dim terms As Variant: terms = grammar.item("terms")
@@ -318,7 +318,7 @@ Function follow(ByVal s As String, ByRef grammar As Object, ByRef first_memory A
     End If
 End Function
 
-' функции сохранения и загрузки грамматики и таблицы в разных форматах
+' С„СѓРЅРєС†РёРё СЃРѕС…СЂР°РЅРµРЅРёСЏ Рё Р·Р°РіСЂСѓР·РєРё РіСЂР°РјРјР°С‚РёРєРё Рё С‚Р°Р±Р»РёС†С‹ РІ СЂР°Р·РЅС‹С… С„РѕСЂРјР°С‚Р°С…
 
 Function load_grammar(ByVal name_file As String) As Object
 
