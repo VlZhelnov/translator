@@ -6,7 +6,7 @@ Const chars_ As Integer = 259
 Const spaces_ As Integer = 260
 
 
-'Функции генерации НКА
+'Р¤СѓРЅРєС†РёРё РіРµРЅРµСЂР°С†РёРё РќРљРђ
 
 Function state(ByVal char As String, Optional ByRef out As Object = Nothing, Optional ByRef out1 As Object = Nothing) As Object
     Set state = dict()
@@ -94,7 +94,7 @@ Function post2nfa(postfix As String) As Object
     End Function
 
 
-'функции поиска соответствий 
+'С„СѓРЅРєС†РёРё РїРѕРёСЃРєР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРёР№
 
 Function list() As Object
     Set list = dict()
@@ -182,7 +182,7 @@ Function match(ByRef start As Object, ByRef lang As Object, ByVal s As String) A
     Next
     
 	    
-    'вычисление приоритета шаблонов
+    'РІС‹С‡РёСЃР»РµРЅРёРµ РїСЂРёРѕСЂРёС‚РµС‚Р° С€Р°Р±Р»РѕРЅРѕРІ
 
     If match.Count = 0 Then
         Set t = Nothing
