@@ -1,0 +1,41 @@
+Dim stack as Object, top as Integer
+Sub stack_init(): Set stack = CreateObject("Scripting.Dictionary"): top = 0: End Sub
+Sub push(byval t): top = top + 1: stack.item(top) = t: End Sub
+Sub pop(byref t): t = stack.item(top): top = top - 1: End Sub
+Sub run(): stack_init: main: End Sub
+'Error: Function main not defained
+Sub booblesort()
+pop arr
+pop N
+Dim tmp as Integer
+Dim i 'Variable Type Error: void
+Dim j as Integer
+i = 1
+L0:
+t0 = i < N
+If Not t0 then GoTo L1
+Dim j as Integer 'Warning: id j has be declared in this function 
+j = i
+L2:
+t1 = j > 0
+If Not t1 then GoTo L3
+Dim i 'Variable Type Error: void 'Warning: id i has be declared in this function 
+t2 = j - 1
+t3 = arr(j) < arr(t2)
+If Not t3 then GoTo L4
+tmp = arr(j)
+arr(j) = arr(t2)
+arr(t2) = tmp
+L4:
+j = t2
+GoTo L2
+L3:
+t4 = i + 1
+i = t4
+GoTo L0
+L1:
+push arr
+Exit Sub
+End Sub
+Sub booblesort() 'Error: double definition function
+End Sub

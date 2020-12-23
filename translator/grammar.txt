@@ -1,0 +1,31 @@
+program-> fundefs;
+fundefs-> fundefs fundef|fundef|;
+fundef-> basic "id" F "(" iargs ")" block;
+iargs->iargs "," iarg|iarg|;
+iarg->type "id";
+block-> "{" decls stmts "}";
+decls-> decls decl|;
+decl-> type "id" ";" ;
+type-> type "[" num "]"|"basic";
+stmts-> stmts stmt|;
+stmt-> loc "=" bool ";"
+| "if" "(" bool ")" M stmt
+| "if" "(" bool ")" M stmt "else" M stmt
+| "while" N "(" bool ")" M stmt
+| "do" N stmt "while" "(" bool ")" M ";"
+| "return" arg ";"
+| block;
+args-> args "," arg|arg|;
+M->;
+N->;
+F->;
+loc->loc "[" bool "]"| "id";
+bool -> bool "or" join | join;
+join -> join "and" equality|equality;
+equality -> equality "eq" rel| equality "neq" rel| rel;
+rel->expr "<" expr|expr "<=" expr|expr ">=" expr|expr ">" expr|expr;
+expr->expr "+" term|expr "-" term|term;
+term->term "*" unary|term "/" unary|term "mod" unary|unary;
+unary-> "!" unary| "-" unary| factor;
+factor-> "(" bool ")"|loc|"id" "(" args ")"|"num"|"real"|"true"|"false";
+arg->loc|bool;

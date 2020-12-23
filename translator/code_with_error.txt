@@ -1,0 +1,24 @@
+int[] booblesort(int[] arr, int N){
+	
+	int tmp; void i; int j; 
+
+	i = 1;
+	while ( i < N ){
+		int j; j = i;
+		while ( j > 0 ) {
+			int i;
+			if  ( arr[j] < arr[j - 1]){
+				tmp = arr[j];
+				arr[j] = arr[j - 1];
+				arr[j - 1] = tmp;
+			}
+			j = j - 1;
+		}
+		i = i + 1;
+	}
+	return arr;
+}
+
+void booblesort(){
+
+}

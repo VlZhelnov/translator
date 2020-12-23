@@ -1,0 +1,151 @@
+Dim stack As Object, top As Integer
+Sub stack_init(): Set stack = CreateObject("Scripting.Dictionary"): top = 0: End Sub
+Sub push(ByVal t): top = top + 1: stack.item(top) = t: End Sub
+Sub pop(ByRef t): t = stack.item(top): top = top - 1: End Sub
+Sub run(): stack_init: main: End Sub
+Sub main()
+Dim arr(0 To 9) As Integer
+Dim res As Variant
+Dim N As Long
+Dim i As Integer
+Dim seed As Integer
+i = 0
+N = 10
+seed = 2
+L0:
+t0 = i < N
+If Not t0 Then GoTo L1
+push seed
+Call rand
+pop t1
+arr(i) = t1
+seed = arr(i)
+t2 = i + 1
+i = t2
+GoTo L0
+L1:
+push N
+push arr
+Call booblesort
+pop t3
+res = t3
+push 18
+push N
+push res
+Call binsearch
+pop t4
+res = t4
+push 10
+Call fibonacci
+pop t5
+N = t5
+push 10
+Call factorial
+pop t6
+N = t6
+End Sub
+Sub rand()
+pop seed
+t0 = 45 * seed
+t1 = t0 + 21
+t2 = t1 Mod 67
+push t2
+Exit Sub
+End Sub
+Sub booblesort()
+pop arr
+pop N
+Dim tmp As Integer
+Dim i As Integer
+Dim j As Integer
+i = 1
+L0:
+t0 = i < N
+If Not t0 Then GoTo L1
+j = i
+L2:
+t1 = j > 0
+If Not t1 Then GoTo L3
+t2 = j - 1
+t3 = arr(j) < arr(t2)
+If Not t3 Then GoTo L4
+tmp = arr(j)
+arr(j) = arr(t2)
+arr(t2) = tmp
+L4:
+j = t2
+GoTo L2
+L3:
+t4 = i + 1
+i = t4
+GoTo L0
+L1:
+push arr
+Exit Sub
+End Sub
+Sub binsearch()
+pop arr
+pop N
+pop Find
+Dim l As Integer
+Dim r As Integer
+Dim m As Integer
+t0 = -1
+l = t0
+r = N
+L0:
+t1 = r - 1
+t2 = l < t1
+If Not t2 Then GoTo L1
+t3 = l + r
+t4 = t3 / 2
+m = t4
+t5 = arr(m) > Find
+If Not t5 Then GoTo L2
+r = m
+GoTo L3
+L2:
+l = m
+L3:
+GoTo L0
+L1:
+push l
+Exit Sub
+End Sub
+Sub factorial()
+pop N
+t0 = N < 2
+If Not t0 Then GoTo L0
+push 1
+Exit Sub
+L0:
+t1 = N - 1
+push t1
+Call factorial
+pop t2
+t3 = N * t2
+push t3
+Exit Sub
+End Sub
+Sub fibonacci()
+pop N
+t0 = N = 1
+t1 = N = 2
+t2 = t0 Or t1
+If Not t2 Then GoTo L0
+push 1
+Exit Sub
+L0:
+t3 = N - 1
+push t3
+Call fibonacci
+pop t4
+t5 = N - 2
+push t5
+Call fibonacci
+pop t6
+t7 = t4 + t6
+push t7
+Exit Sub
+End Sub
+
