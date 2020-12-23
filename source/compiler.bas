@@ -1,6 +1,6 @@
 Attribute VB_Name = "compiler"
 
-Sub main() 'Точка входа анализа
+Sub main() 'РўРѕС‡РєР° РІС…РѕРґР° Р°РЅР°Р»РёР·Р°
 
     Dim current_path As String: current_path = ThisWorkbook.Path
     
@@ -15,7 +15,7 @@ Sub main() 'Точка входа анализа
 End Sub
 
 
-Sub gen() ' Генерация таблицы разбора
+Sub gen() 'РўРѕС‡РєР° РІС…РѕРґР° Р°РЅР°Р»РёР·Р°
     Dim current_path As String: current_path = ThisWorkbook.Path
     Dim grammar As Object: Set grammar = load_grammar(current_path & "\grammar.txt")
     Dim parse_table As Object: Set parse_table = CreateTable(grammar, True)
@@ -24,7 +24,7 @@ Sub gen() ' Генерация таблицы разбора
 End Sub
 
 
-' функции вызываемые во время анализа при свертках для разных грамматик
+' С„СѓРЅРєС†РёРё РІС‹Р·С‹РІР°РµРјС‹Рµ РІРѕ РІСЂРµРјСЏ Р°РЅР°Р»РёР·Р° РїСЂРё СЃРІРµСЂС‚РєР°С… РґР»СЏ СЂР°Р·РЅС‹С… РіСЂР°РјРјР°С‚РёРє
 
 Function ReToPostfix(ByVal rule_num As Integer, ByRef args As Object, _
                      ByRef pcode As Object, ByRef vars As Object) As String
