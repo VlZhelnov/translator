@@ -1,7 +1,4 @@
 Attribute VB_Name = "LR1"
-Const left As Integer = 0
-Const right As Integer = 1
-Const lookahead As Integer = 2
 
 Sub create_stack(ByRef pcode As Object)
     dict_append pcode, "Dim stack as Object, top as Integer"
@@ -34,13 +31,14 @@ Sub analize(ByRef src_str As Object, ByRef parseTable As Object, _
                     'ReToPostfix 0, symbols, pcode, vars
                     Compile rule_num, symbols, pcode, vars                  'for translator
                     save_to_file outfile, Join(pcode.items(), vbNewLine)    'for translator
+                    Debug.Print "accept"
                     Exit Sub
                 End If
-                rule = Split(rules.keys()(rule_num), "->", 2)
+                    rule = rules.items()(rule_num)
                 Dim ret As Object: Set ret = Compile(rule_num, symbols, pcode, vars)
               ' Dim ret As String: ret = ReToPostfix(rule_num, symbols, pcode, vars)
-                If rule(1) <> " ." Then
-                    For index = 1 To UBound(Split(rule(1), " "))
+                If UBound(rule) > 0 Then
+                    For index = 1 To UBound(rule)
                         Stack_pop states: Stack_pop symbols
                     Next
                 End If
@@ -56,71 +54,68 @@ Sub analize(ByRef src_str As Object, ByRef parseTable As Object, _
                 Debug.Print "no action for state " & stack_top(states) & " and char " & src_str.item("t")
                 Exit Sub
         End Select
-
     Wend
    
 End Sub
 
-'Функции для генерации таблицы разбора
-
 Function CreateTable(ByRef grammar As Object, Optional create_info_file = False) As Object
 
-    Dim products As Object: Set products = grammar("products")
-    Dim terms As Variant: terms = grammar("terms")
-    Dim rules As Object: Set rules = grammar("rules")
-    Dim symbols As Variant, N As Integer
+    Dim rules As Variant: rules = grammar.item("rules").items()
+    Dim nterms As Object: Set nterms = grammar.item("nterm")
+    Dim terms As Object: Set terms = grammar.item("term")
+
+    Dim sym As Variant
     
-    Set CreateTable = dict()
-    
-    Dim first_set As Object: Set first_set = dict()
-    Dim follow_set As Object: Set follow_set = dict()
-    Dim nmemory As Object: Set nmemory = dict()
-    
-    For Each nterm In products.keys()
-        nullable nterm, grammar, nmemory
-        Set first_set.item(nterm) = first(nterm, grammar, nmemory)
-        Set follow_set.item(nterm) = follow(nterm, grammar, first_set, nmemory)
+    For Each sym In nterms.keys()
+        nullable sym, grammar
     Next
+    For Each sym In nterms.keys()
+        nterms.item(sym).item("first") = nfirst(sym, grammar).keys()
+    Next
+    For Each sym In nterms.keys()
+        nterms.item(sym).item("follow") = nfollow(sym, grammar).keys()
+    Next
+
+    Dim core As Object: Set core = dict()
+    core.item(Int(Join(Array(0, 1, 0), " "))) = Array(0, 1, 0)
     
-    symbols = Split(Join(products.keys(), "|") & "|" & Join(terms, "|"), "|")
-    start_rule = Array(products.keys()(0), "." & products.items()(0)(0), "$")
+    Dim set_items As Object: Set set_items = dict()
+    dict_append set_items, closure(core, grammar)
     
-    Dim tmp_set As Object: Set tmp_set = dict(): dict_append tmp_set, start_rule
-    Dim C As Object: Set C = dict(): dict_append C, closure(tmp_set, grammar, first_set, follow_set)
-    Dim goto_set As Object, states As Object: Set states = dict()
+    Dim unic_key As String, unic As Object: Set unic = dict()
+    unic_key = Join(sort(set_items.item(0).keys()), "")
+    unic.item(unic_key) = 0
+    
+    
+    Dim symbols As Variant, symbol As Variant, N As Integer
+    Dim states As Object: Set states = dict()
+    Dim goto_set As Object, action_type As String
     
     Do
-        For Each symbol In symbols
-            Set goto_set = fgoto(C(N), symbol, grammar, first_set, follow_set)
-            If goto_set.Count() > 0 Then
-                unic = True: l = 0
-                For Each p In C.items()
-                    If to_str(goto_set) = to_str(p) Then
-                        unic = False: Exit For
-                    Else: l = l + 1
-                    End If
-                Next
-                action_type = IIf(products.exists(symbol), "g", "s")
-                If unic Then
-                    dict_append states, Array(action_type, N, C.Count(), symbol)
-                    dict_append C, goto_set
-                    
-                    For Each item In goto_set.items()
-                        If Mid(item(right), Len(item(right)), 1) = "." Or Mid(item(right), Len(item(right)), 1) = "$" Then
-                            rule = item(left) & "->" & IIf(item(right) = ".", " .", item(right))
-                            If rules.exists(rule) Then
-                                dict_append states, Array("r", C.Count() - 1, rules(rule), item(lookahead))
+        For Each symbols In Array(nterms.keys(), terms.keys())
+            For Each symbol In symbols
+                Set goto_set = ngoto(set_items.item(N), symbol, grammar)
+                If goto_set.Count() > 0 Then
+                    action_type = IIf(nterms.exists(symbol), "g", "s")
+                    unic_key = Join(sort(goto_set.keys()), " ")
+                    If Not unic.exists(unic_key) Then
+                        unic.item(unic_key) = set_items.Count()
+                        dict_append states, Array(action_type, N, set_items.Count(), symbol)
+                        dict_append set_items, goto_set
+                        For Each item In goto_set.items()
+                            If item(1) = UBound(rules(item(0))) + 1 Then
+                                dict_append states, _
+                                    Array("r", set_items.Count() - 1, item(0), terms.keys()(item(2)))
                             End If
-                        End If
-                    Next
-                Else: dict_append states, Array(action_type, N, l, symbol)
+                        Next
+                    Else: dict_append states, Array(action_type, N, unic.item(unic_key), symbol)
+                    End If
                 End If
-            End If
+            Next
         Next
         N = N + 1
-    Loop Until N >= C.Count()
-
-
+    Loop Until N >= set_items.Count()
+      
     Set CreateTable = dict()
     For Each s In states.items()
         If Not CreateTable.exists(s(1)) Then Set CreateTable.item(s(1)) = dict()
@@ -130,248 +125,290 @@ Function CreateTable(ByRef grammar As Object, Optional create_info_file = False)
     If create_info_file Then
         Dim info As Object: Set info = dict()
         Set info.item("grammar") = grammar
-        Set info.item("nullable") = nmemory
-        Set info.item("first") = first_set
-        Set info.item("follow") = follow_set
-        Set info.item("items") = C
+        Set info.item("set_items") = set_items
         Set info.item("states") = states
         Set info.item("table") = CreateTable
         dict_to_file info, "info.txt"
     End If
     
+    
 End Function
-Function fgoto(ByRef i As Object, ByVal x As String, ByVal grammar As Object, ByRef first_set As Object, ByRef follow_set As Object) As Object
-    Set fgoto = dict()
-    'If x = "$" Then Exit Function
-    Dim point_position As Integer
-    For Each Point In i.items
-        point_position = InStr(1, Point(right), "." & x)
-        If point_position < Len(Point(right)) And point_position > 0 Then
-            If point_position + Len(x) = Len(Point(right)) Or _
-               Mid(Point(right), point_position + Len(x) + 1, 1) = " " Then
-                    next_point = Trim(Replace(Point(right) & " ", "." & x & " ", x & " ."))
-                    dict_append fgoto, Array(Point(left), next_point, Point(lookahead))
+
+
+Function sort(arr As Variant) As Variant
+    Dim tmp As Long, i As Long, j As Long
+    i = 1
+    While (i <= UBound(arr))
+        j = i
+        While (j > 0)
+            If (arr(j) < arr(j - 1)) Then
+                tmp = arr(j)
+                arr(j) = arr(j - 1)
+                arr(j - 1) = tmp
+            End If
+            j = j - 1
+        Wend
+        i = i + 1
+    Wend
+    sort = arr
+End Function
+
+Function closure(ByVal set_points As Object, ByRef grammar As Object) As Object
+
+    Dim n_point As Long: Set closure = set_points
+    
+    Dim rules As Variant: rules = grammar.item("rules").items()
+    Dim nterms As Object: Set nterms = grammar.item("nterm")
+    Dim terms As Object: Set terms = grammar.item("term")
+    
+    Dim unic As Variant, cur_point As Variant
+    Dim cur_symbol As Variant, next_symbol As Variant
+    
+    While True
+        cur_point = set_points.items()(n_point)
+        If Not cur_point(1) = UBound(rules(cur_point(0))) + 1 Then
+            cur_symbol = rules(cur_point(0))(cur_point(1))
+            If nterms.exists(cur_symbol) Then
+                For n_rule = 0 To UBound(rules)
+                    If rules(n_rule)(0) = cur_symbol Then
+                        If cur_point(1) = UBound(rules(cur_point(0))) Then
+                            unic = Array(n_rule, 1, cur_point(2))
+                            closure.item(Int(Join(unic, ""))) = unic
+                        Else
+                            next_symbol = rules(cur_point(0))(cur_point(1) + 1)
+                            If nterms.exists(next_symbol) Then
+                                For Each e In nterms.item(next_symbol).item("first")
+                                    unic = Array(n_rule, 1, terms.item(e))
+                                    closure.item(Int(Join(unic, ""))) = unic
+                                Next
+                                If nterms.item(cur_symbol).item("nullable") Then
+                                    For Each e In nterms.item(next_symbol).item("follow")
+                                        unic = Array(n_rule, 1, terms.item(e))
+                                        closure.item(Int(Join(unic, ""))) = unic
+                                    Next
+                                End If
+                            Else
+                                unic = Array(n_rule, 1, terms.item(next_symbol))
+                                closure.item(Int(Join(unic, ""))) = unic
+                            End If
+                        End If
+                    End If
+                Next
+            End If
+        End If
+        If n_point = closure.Count() - 1 Then Exit Function
+        n_point = n_point + 1
+    Wend
+    
+End Function
+    
+Function ngoto(ByVal set_points As Object, ByVal sym As String, ByVal grammar As Object) As Object
+    Dim point As Variant: Set ngoto = dict()
+    Dim rules As Variant: rules = grammar.item("rules").items()
+    
+    For Each point In set_points.items()
+        If point(1) <= UBound(rules(point(0))) Then
+            If rules(point(0))(point(1)) = sym Then
+                ngoto.item(Int(Join(Array(point(0), point(1) + 1, point(2)), ""))) _
+                    = Array(point(0), point(1) + 1, point(2))
             End If
         End If
     Next
-   If fgoto.Count() > 0 Then Set fgoto = closure(fgoto, grammar, first_set, follow_set)
-End Function
-Sub nullable(ByVal nterm As String, ByRef grammar As Object, ByRef memory As Object)
-  
-    Dim products As Object: Set products = grammar("products")
-    
-    If products.exists(nterm) Then
-        For Each product In products.item(nterm)
-            If product = "" Then
-                 memory.item(nterm) = True: Exit Sub
-            End If
-        Next
-        For Each product In products.item(nterm)
-            Words = Split(product, " ")
-            For n_word = UBound(Words) To 0 Step -1
-                If products.exists(Words(n_word)) Then
-                    If Not memory.exists(Words(n_word)) Then
-                        memory.item(Words(n_word)) = False
-                        nullable Words(n_word), grammar, memory
-                        If Not memory.item(Words(n_word)) Then
-                            memory.item(nterm) = False: Exit Sub
-                        End If
-                    Else
-                        Exit Sub
-                    End If
-                Else
-                     memory.item(nterm) = False: Exit Sub
-                End If
-            Next
-        Next
-            memory.item(nterm) = True
+    If ngoto.Count() > 0 Then
+    Set ngoto = closure(ngoto, grammar)
     End If
-    
+End Function
+
+Sub nullable(ByRef sym As Variant, ByRef grammar As Object)
+
+    Dim rules As Variant: rules = grammar("rules").items()
+    Dim is_nullable As Boolean: is_nullable = True
+    For Each rule In rules
+        If rule(0) = sym And UBound(rule) = 0 Then
+            With grammar.item("nterm").item(rule(0))
+                .item("nullable") = True
+            End With
+            Exit Sub
+        End If
+    Next
+    For Each rule In rules
+        If rule(0) = sym Then
+            For n_sym = UBound(rule) To 1 Step -1
+                With grammar.item("nterm")
+                    If .exists(rule(n_sym)) Then
+                        With .item(rule(n_sym))
+                            If Not .exists("nullable") Then
+                                .item("nullable") = "None"
+                                nullable rule(n_sym), grammar
+                            End If
+                            If .item("nullable") <> "None" Then
+                                is_nullable = is_nullable And .item("nullable")
+                            End If
+                        End With
+                    Else
+                        is_nullable = is_nullable And False
+                    End If
+                End With
+            Next
+        End If
+    Next
+    With grammar.item("nterm").item(sym)
+        .item("nullable") = is_nullable
+    End With
 End Sub
 
-Function closure(ByVal set_items As Object, ByRef grammar As Object, ByRef first_set As Object, ByRef follow_set As Object) As Object
-    Dim n_item As Long: Set closure = set_items
-    Dim next_symbol, point_sympol As String, next_point As Variant
-    Dim products As Object: Set products = grammar("products")
-    Dim point_position As Integer, tmp_point As String
-    Dim d As Object: Set d = dict()
-    While True
-        tmp_point = set_items(n_item)(right)
-        point_position = InStr(1, tmp_point, ".")
-        If point_position <> Len(tmp_point) Then
-            point_symbol = Split(Split(tmp_point, ".")(1), " ")(0)
-            If products.exists(point_symbol) Then
-                If UBound(products.item(point_symbol)) = -1 Then
-                    For Each term In follow_set.item(point_symbol)
-                        next_point = Array(point_symbol, ".", term)
-                        If check(set_items, next_point) Then dict_append set_items, next_point
-                    Next
-                Else
-                    For Each product In products.item(point_symbol)
-                        If point_position + Len(point_symbol) = Len(tmp_point) Then
-                            next_point = Array(point_symbol, "." & product, set_items(n_item)(lookahead))
-                            If check(set_items, next_point) Then dict_append set_items, next_point
-                        Else
-                            next_symbol = Split(Split(tmp_point, ".")(1), " ")(1)
-                            Set d = dict()
-                            For Each term In first_set.item(next_symbol)
-                                d.item(term) = Null
-                            Next
-                            If follow_set.exists(next_symbol) Then
-                                For Each term In follow_set.item(next_symbol)
-                                    d.item(term) = Null
-                                Next
-                            End If
-                            For Each term In d.keys
-                                next_point = Array(point_symbol, "." & product, term)
-                                If check(set_items, next_point) Then dict_append set_items, next_point
-                            Next
-                        End If
-                    Next
+Function nfirst(ByVal sym As String, ByRef grammar As Object) As Object
+
+    Dim terms As Object: Set terms = grammar.item("term")
+    Dim rules As Variant: rules = grammar.item("rules").items()
+    Dim tmp As Object, tmp_arr As Variant: Set nfirst = dict()
+    
+    If grammar.item("term").exists(sym) Then
+        nfirst.item(sym) = Empty: Exit Function
+    End If
+    
+    For Each rule In rules
+        If rule(0) = sym Then
+            For n_sym = 1 To UBound(rule)
+                If grammar.item("term").exists(rule(n_sym)) Then
+                    nfirst.item(rule(n_sym)) = Empty: Exit For
                 End If
-            End If
-        End If
-        If n_item = set_items.Count() - 1 Then Exit Function
-        n_item = n_item + 1
-    Wend
-
-End Function
-
-Function check(ByRef set_items As Object, ByRef item As Variant) As Boolean
-    Dim i As Variant: check = True
-    For Each i In set_items.items()
-        If to_str(item) = to_str(i) Then
-            check = False: Exit Function
+                If rule(n_sym) = sym Then Exit For
+                Set tmp = nfirst(CStr(rule(n_sym)), grammar)
+                For Each e In tmp
+                    nfirst.item(e) = Empty
+                Next
+                If Not grammar.item("nterm").item(rule(n_sym)).item("nullable") Then Exit For
+            Next
         End If
     Next
 End Function
 
-Function first(ByVal s As String, ByRef grammar As Object, ByRef nmemory As Object) As Object
-
-    Dim terms As Variant: terms = grammar.item("terms")
-    Dim products As Object: Set products = grammar.item("products")
-    Dim tmp As Object, tmp_arr As Variant: Set first = dict()
+Function nfollow(ByVal sym As String, ByRef grammar As Object)
+    Dim rules As Variant: rules = grammar.item("rules").items()
+    Dim tmp_arr As Variant, n_term As Integer: Set nfollow = dict()
     
-    If InStr(1, to_str(terms), s) Then
-        first.item(s) = Empty: Exit Function
-    End If
-    
-    If products.exists(s) Then
-        For Each pr In products.item(s)
-            tmp_arr = Split(pr, " ")
-            For cnt = 0 To UBound(tmp_arr)
-            If InStr(1, to_str(terms), tmp_arr(cnt)) Then
-                first.item(tmp_arr(cnt)) = Empty: Exit For
-            End If
-            If tmp_arr(cnt) <> s Then
-                    Set tmp = first(CStr(tmp_arr(cnt)), grammar, nmemory)
-                    For Each e In tmp
-                        first.item(e) = Empty
-                    Next
-                    If Not nmemory.exists(tmp_arr(cnt)) Then
-                        nullable tmp_arr(cnt), grammar, nmemory
-                    End If
-                    If Not nmemory.item(tmp_arr(cnt)) Then Exit For
-                End If
-            Next
-        Next
-    End If
-End Function
-Function follow(ByVal s As String, ByRef grammar As Object, ByRef first_memory As Object, ByRef nmemory As Object, Optional ByRef checked As Object = Nothing)
-    Dim products As Object: Set products = grammar.item("products")
-    Dim tmp_arr As Variant, n_term As Integer: Set follow = dict()
-    
-    If TypeName(checked) = "Nothing" Then Set checked = dict()
-    
-    If products.exists(s) Then
-        For Each product In products.keys():
-            For Each r In products.item(product)
-                If InStr(1, r & " ", s & " ") > 0 Then
-                    tmp_arr = Split(Trim(Split(r & " ", s & " ")(1)), " ")
-                    For n_nterm = 0 To UBound(tmp_arr)
-                        If Not first_memory.exists(tmp_arr(n_nterm)) Then
-                            Set first_memory.item(tmp_arr(n_nterm)) = first(tmp_arr(n_nterm), grammar, nmemory)
-                        End If
-                        For Each e In first_memory.item(tmp_arr(n_nterm))
-                            follow.item(e) = Empty
-                        Next
-                        If products.exists(tmp_arr(n_nterm)) Then
-                            If Not nmemory.exists(tmp_arr(n_nterm)) Then
-                                nullable tmp_arr(n_nterm), grammar, nmemory
-                            End If
-                            If Not nmemory.item(tmp_arr(n_nterm)) Then Exit For
+    If grammar.item("nterm").exists(sym) Then
+        For Each rule In rules
+            For n_sym = 1 To UBound(rule)
+                If rule(n_sym) = sym Then
+                    For n_sym_find = n_sym + 1 To UBound(rule)
+                         If grammar.item("nterm").exists(rule(n_sym_find)) Then
+                            For Each e In grammar.item("nterm").item(rule(n_sym_find)).item("first")
+                                nfollow.item(e) = Empty
+                            Next
+                            If Not grammar.item("nterm").item(rule(n_sym_find)).item("nullable") Then Exit For
                         Else
+                            nfollow.item(rule(n_sym_find)) = Empty
                             Exit For
                         End If
-                     Next
-                     If n_nterm = UBound(tmp_arr) + 1 Then
-                        If Not checked.exists(product) Then
-                            checked.item(product) = Null
-                            For Each e In follow(product, grammar, first_memory, nmemory, checked)
-                                follow.item(e) = Empty
+                    Next
+                    If n_sym_find = UBound(rule) + 1 Then
+                        If Not grammar.item("nterm").item(sym).exists("follow") Then
+                            grammar.item("nterm").item(sym).item("follow") = "None"
+                            For Each e In nfollow(sym, grammar)
+                                nfollow.item(e) = Empty
                             Next
+                            If grammar.item("nterm").item(rule(0)).exists("follow") Then
+                                For Each e In grammar.item("nterm").item(rule(0)).item("follow")
+                                    nfollow.item(e) = Empty
+                                Next
+                            End If
                         End If
                     End If
                 End If
             Next
         Next
     End If
+    
 End Function
 
-' функции сохранения и загрузки грамматики и таблицы в разных форматах
+Function read_grammar(ByRef name_grammar_file As String) As Object
 
-Function load_grammar(ByVal name_file As String) As Object
-
-    Set load_grammar = dict()
+    Dim grammar_text As String: grammar_text = get_file_text(name_grammar_file)
+    grammar_text = Replace(grammar_text, vbNewLine, " ")
+    grammar_text = Replace(grammar_text, vbTab, " ")
     
-    Dim products As Object: Set products = dict()
-    Dim terms As Object: Set terms = dict()
-    Dim rules As Object: Set rules = dict()
-    Dim nullabls As Object: Set nullabls = dict()
-    Dim form As Object, simbol As Variant
-    Dim tmp_arr As Variant, line As Variant
-    Dim product As Variant, char As Variant
-
-    For Each line In Split(get_file_text(name_file), ";" & vbNewLine)
-        If InStr(1, line, "->") Then
-            If line <> Empty Then
-                tmp_arr = Split(Replace(line, vbNewLine, Empty), "->")
-                For Each product In Split(tmp_arr(1), "|")
-                    For Each char In Split(product, " ")
-                        If char Like Chr(34) & "*" & Chr(34) Then
-                            If char <> Empty Then
-                                terms(Trim(Replace(char, Chr(34), Empty))) = Null
+    Dim grammar As Object: Set grammar = dict()
+    
+    Set grammar.item("nterm") = dict()
+    Set grammar.item("term") = dict(): grammar.item("term").item("$") = 0
+    Set grammar.item("rules") = dict()
+    
+    Dim tmp_dict As Object, cur_rule As Integer, cur_head As String
+    
+    Dim state As Integer
+    For Each word In Split(grammar_text, " ")
+        Select Case state
+            Case 0
+                Select Case word
+                    Case "": state = 0
+                    Case ":", "|":
+                        Debug.Print "FormatError: No head nterm for production"
+                        Exit Function
+                    Case ";"
+                        Debug.Print "FormatError: No enter production"
+                        Exit Function
+                    Case Else
+                        If Mid(word, 1, 1) = Chr(34) And _
+                           Mid(word, Len(word), 1) = Chr(34) Then
+                            Debug.Print "head symbol must be nterm"
+                            Exit Function
+                        Else
+                            If Not grammar.item("nterm").exists(word) Then
+                                Set grammar.item("nterm").item(word) = dict()
                             End If
+                            cur_rule = 0: cur_head = word
+                            Set tmp_dict = dict(): Set tmp_dict.item(cur_rule) = dict()
+                            dict_append tmp_dict.item(cur_rule), word
+                            state = 1
                         End If
-                    Next
-                Next
-                Set form = dict()
-                For Each simbol In Split(Replace(tmp_arr(1), Chr(34), Empty), "|")
-                    dict_append form, Trim(simbol)
-                Next
-                products.item(Trim(tmp_arr(0))) = form.items()
-            End If
-        End If
+                End Select
+            Case 1
+                Select Case word
+                    Case "": state = 1
+                    Case ":": state = 2
+                    Case Else
+                        Debug.Print "FormatError: No sybmol ':' after head nterm"
+                        Exit Function
+                End Select
+            Case 2
+                Select Case word
+                    Case "": state = 2
+                    Case ":":
+                        Debug.Print "FormatError: Use ':' in body production"
+                        Exit Function
+                    Case "|"
+                        cur_rule = cur_rule + 1
+                        Set tmp_dict.item(cur_rule) = dict()
+                        dict_append tmp_dict.item(cur_rule), cur_head
+                    Case ";"
+                        For Each rule In tmp_dict.items()
+                            grammar.item("rules").item(grammar.item("rules").Count()) = rule.items()
+                        Next
+                        state = 0
+                    Case Else
+                        If Mid(word, 1, 1) = Chr(34) And _
+                           Mid(word, Len(word), 1) = Chr(34) Then
+                            word = Mid(word, 2, Len(word) - 2)
+                            If Not grammar.item("term").exists(word) Then
+                                grammar.item("term").item(word) = grammar.item("term").Count()
+                            End If
+                            dict_append tmp_dict.item(cur_rule), word
+                            state = 2
+                        Else
+                            If Not grammar.item("nterm").exists(word) Then
+                                Set grammar.item("nterm").item(word) = dict()
+                            End If
+                           dict_append tmp_dict.item(cur_rule), word
+                            state = 2
+                        End If
+                End Select
+        
+        End Select
     Next
-    For Each prod In products.keys()
-        If UBound(products.item(prod)) = -1 Then
-            rules.item(prod & "-> .") = rules.Count()
-        Else
-            For Each elem In products(prod)
-                rules.item(Join(Array(prod, Replace(elem, ".", Empty) & " ."), "->")) _
-                        = rules.Count()
-            Next
-        End If
-    Next
-    
-    Set load_grammar.item("products") = products
-    Set load_grammar.item("rules") = rules
-    load_grammar.item("terms") = terms.keys()
-    
+    Set read_grammar = grammar
 End Function
-
-
-
 
 Sub save_table(ByRef table As Object, ByVal name_file As String)
     Dim fso As Object, text_stream As Object
@@ -382,9 +419,9 @@ Sub save_table(ByRef table As Object, ByVal name_file As String)
     For cnt = 0 To table.Count() - 1
         tmp_str = ""
         For Each k In table.item(cnt)
-            tmp_str = tmp_str & "|" & k & " " & table.item(cnt).item(k)
+            tmp_str = tmp_str & " | " & k & " " & table.item(cnt).item(k)
         Next
-        dict_append d, Mid(tmp_str, 2)
+        dict_append d, Mid(tmp_str, 4)
     Next
     
     Set text_stream = fso.OpenTextFile(name_file, 2, True)
@@ -392,36 +429,65 @@ Sub save_table(ByRef table As Object, ByVal name_file As String)
     text_stream.Close
 End Sub
 Function read_table(ByVal name_file As String) As Object
-    Set read_table = dict()
-    Dim tmp_dict As Object
+    
     Dim text As String: text = get_file_text(name_file)
-    For Each line In Split(text, vbNewLine)
-        If line <> Empty Then
-            Set tmp_dict = dict()
-            For Each pair In Split(line, "|")
-                pair = Split(pair, " ")
-                tmp_dict.item(pair(0)) = pair(1)
-            Next
-            dict_append read_table, tmp_dict
-        End If
+    text = Replace(text, vbNewLine, " EndRow ")
+    
+    Set read_table = dict()
+    Dim state As Integer, symbol As String, row As Integer
+    
+    For Each word In Split(text, " ")
+        Select Case state
+            Case 0
+                 Select Case word
+                    Case "EndRow": state = 0
+                    Case Else
+                        row = read_table.Count()
+                        Set read_table.item(row) = dict()
+                        sympol = word
+                        state = 1
+                 End Select
+            Case 1
+                 Select Case word
+                    Case "EndRow": Debug.Print "FormatError": Exit Function
+                    Case Else
+                        read_table.item(row).item(sympol) = word
+                        state = 2
+                 End Select
+            Case 2
+                 Select Case word
+                    Case "EndRow": state = 0
+                    Case "|": state = 3
+                    Case Else
+                        read_table.item(row).item(symbol) = word
+                        state = 2
+                 End Select
+            Case 3
+                 Select Case word
+                    Case "EndRow": state = 0
+                    Case Else
+                        sympol = word
+                        state = 1
+                 End Select
+        End Select
     Next
+    
 End Function
 Sub table_to_range(ByRef table As Object, ByRef grammar As Object)
-    Dim symbols As Variant
-    symbols = Split(Join(grammar.item("terms"), "|") & "|$|" & _
-                    Join(grammar.item("products").keys(), "|"), "|")
-            
-    For t = 0 To UBound(symbols)
-        Range("A1").Offset(, t + 1) = symbols(t)
-    Next
-    For cnt = 0 To table.Count - 1
-        For t = 0 To UBound(symbols)
-                Range("A2").Offset(cnt, t + 1) = _
-                    table.item(cnt).item(symbols(t))
+    Dim symbols As Variant, symbol As Integer, state As Integer
+    
+    Dim nterms As Object: Set nterms = grammar.item("nterm")
+    Dim terms As Object: Set terms = grammar.item("term")
+
+    
+    For Each symbols In Array(nterms.keys(), terms.keys())
+        For symbol = 0 To UBound(symbols)
+            Range("A1").Offset(, symbol + 1) = symbols(symbol)
+            For state = 0 To table.Count - 1
+                Range("A2").Offset(state, symbol + 1) = _
+                    table.item(state).item(symbols(symbol))
+                Range("A1").Offset(state + 1) = state
+            Next
         Next
-        Range("A1").Offset(cnt + 1) = cnt
     Next
 End Sub
-
-
-
