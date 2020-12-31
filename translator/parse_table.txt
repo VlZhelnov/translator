@@ -1,532 +1,359 @@
-fundefs g1|fundef g2|basic s3
-$ r0|fundef g4|basic s3
-$ r2|basic r2
+fundefs g1 | fundef g2 | basic s3
+$ r0 | fundef g4 | basic s3
+$ r2 | basic r2
 id s5
-$ r1|basic r1
-( r29|F g6
+$ r1 | basic r1
+( r29 | F g6
 ( s7
-) r7|, r7|iargs g8|iarg g9|type g10|basic s11
-) s12|, s13
-) r6|, r6
-id s14|[ s15
-id r14|[ r14
-block g16|{ s17
-iarg g18|type g10|basic s11
-) r8|, r8
+) r7 | , r7 | iargs g8 | iarg g9 | type g10 | basic s11
+) s12 | , s13
+) r6 | , r6
+id s14 | [ s15
+id r14 | [ r14
+block g16 | { s17
+iarg g18 | type g10 | basic s11
+) r8 | , r8
 num s19
-$ r4|basic r4
-[ r11|id r11|if r11|while r11|do r11|return r11|{ r11|} r11|basic r11|decls g20
-) r5|, r5
+$ r4 | basic r4
+} r11 | id r11 | if r11 | while r11 | do r11 | return r11 | { r11 | basic r11 | decls g20
+) r5 | , r5
 ] s21
-} r16|[ r16|id r16|if r16|while r16|do r16|return r16|{ r16|else r16|decl g22|type g23|stmts g24|basic s11
-id r13|[ r13
-[ r10|id r10|if r10|while r10|do r10|return r10|{ r10|} r10|basic r10
-id s25|[ s15
-block g26|stmt g27|loc g28|id s29|{ s30|} s31|if s32|while s33|do s34|return s35
+} r16 | id r16 | if r16 | while r16 | do r16 | return r16 | { r16 | else r16 | type g22 | stmts g23 | decl g24 | basic s11
+id r13 | [ r13
+id s25 | [ s15
+block g26 | stmt g27 | loc g28 | id s29 | { s30 | } s31 | if s32 | while s33 | do s34 | return s35
+} r10 | id r10 | if r10 | while r10 | do r10 | return r10 | { r10 | basic r10
 ; s36
-} r23|[ r23|id r23|if r23|while r23|do r23|return r23|{ r23|else r23
-} r15|[ r15|id r15|if r15|while r15|do r15|return r15|{ r15|else r15
-[ s37|= s38
-= r31|[ r31
-[ r11|id r11|if r11|while r11|do r11|return r11|{ r11|} r11|basic r11|decls g39
-$ r9|basic r9
+} r23 | id r23 | if r23 | while r23 | do r23 | return r23 | { r23 | else r23
+} r15 | id r15 | if r15 | while r15 | do r15 | return r15 | { r15 | else r15
+[ s37 | = s38
+= r31 | [ r31
+} r11 | id r11 | if r11 | while r11 | do r11 | return r11 | { r11 | basic r11 | decls g39
+$ r9 | basic r9
 ( s40
-( r28|[ r28|id r28|if r28|while r28|do r28|return r28|{ r28|N g41
-( r28|[ r28|id r28|if r28|while r28|do r28|return r28|{ r28|N g42
-loc g43|bool g44|join g45|equality g46|rel g47|expr g48|term g49|unary g50|factor g51|arg g52|id s53|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-[ r12|id r12|if r12|while r12|do r12|return r12|{ r12|} r12|basic r12
-loc g61|bool g62|join g63|equality g64|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g78|bool g79|join g45|equality g46|rel g47|expr g48|term g49|unary g50|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-} r16|[ r16|id r16|if r16|while r16|do r16|return r16|{ r16|else r16|decl g22|type g23|stmts g81|basic s11
-loc g82|bool g83|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-( s99
-block g100|stmt g101|loc g102|id s29|{ s103|if s104|while s105|do s106|return s107
-; r55|< r55|<= r55|>= r55|> r55|or r55|and r55|eq r55|neq r55|+ r55|- r55|* r55|/ r55|mod r55|[ s108
-; r62|or s109
-; r33|or r33|and s110
-; r35|or r35|and r35|eq s111|neq s112
-; r38|or r38|and r38|eq r38|neq r38
-; r43|or r43|and r43|eq r43|neq r43|< s113|<= s114|>= s115|> s116|+ s117|- s118
-< r46|<= r46|>= r46|> r46|; r46|or r46|and r46|eq r46|neq r46|+ r46|- r46|* s119|/ s120|mod s121
-< r50|<= r50|>= r50|> r50|; r50|or r50|and r50|eq r50|neq r50|+ r50|- r50|* r50|/ r50|mod r50
-< r53|<= r53|>= r53|> r53|; r53|or r53|and r53|eq r53|neq r53|+ r53|- r53|* r53|/ r53|mod r53
-; s122
-; r31|[ r31|< r31|<= r31|>= r31|> r31|or r31|and r31|eq r31|neq r31|+ r31|- r31|* r31|/ r31|mod r31|( s123
-loc g82|bool g124|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g78|unary g125|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-loc g78|unary g126|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-< r57|<= r57|>= r57|> r57|; r57|or r57|and r57|eq r57|neq r57|+ r57|- r57|* r57|/ r57|mod r57
-< r58|<= r58|>= r58|> r58|; r58|or r58|and r58|eq r58|neq r58|+ r58|- r58|* r58|/ r58|mod r58
-< r59|<= r59|>= r59|> r59|; r59|or r59|and r59|eq r59|neq r59|+ r59|- r59|* r59|/ r59|mod r59
-< r60|<= r60|>= r60|> r60|; r60|or r60|and r60|eq r60|neq r60|+ r60|- r60|* r60|/ r60|mod r60
-< r55|<= r55|>= r55|> r55|] r55|or r55|and r55|eq r55|neq r55|+ r55|- r55|* r55|/ r55|mod r55|[ s127
-] s128|or s129
-] r33|or r33|and s130
-] r35|or r35|and r35|eq s131|neq s132
-] r38|or r38|and r38|eq r38|neq r38
-] r43|or r43|and r43|eq r43|neq r43|< s133|<= s134|>= s135|> s136|+ s137|- s138
-< r46|<= r46|>= r46|> r46|] r46|or r46|and r46|eq r46|neq r46|+ r46|- r46|* s139|/ s140|mod s141
-< r50|<= r50|>= r50|> r50|] r50|or r50|and r50|eq r50|neq r50|+ r50|- r50|* r50|/ r50|mod r50
-< r53|<= r53|>= r53|> r53|] r53|or r53|and r53|eq r53|neq r53|+ r53|- r53|* r53|/ r53|mod r53
-< r31|<= r31|>= r31|> r31|] r31|or r31|and r31|eq r31|neq r31|+ r31|- r31|* r31|/ r31|mod r31|[ r31|( s142
-loc g82|bool g143|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g61|unary g144|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g61|unary g145|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-< r57|<= r57|>= r57|> r57|] r57|or r57|and r57|eq r57|neq r57|+ r57|- r57|* r57|/ r57|mod r57
-< r58|<= r58|>= r58|> r58|] r58|or r58|and r58|eq r58|neq r58|+ r58|- r58|* r58|/ r58|mod r58
-< r59|<= r59|>= r59|> r59|] r59|or r59|and r59|eq r59|neq r59|+ r59|- r59|* r59|/ r59|mod r59
-< r60|<= r60|>= r60|> r60|] r60|or r60|and r60|eq r60|neq r60|+ r60|- r60|* r60|/ r60|mod r60
-< r55|<= r55|>= r55|> r55|; r55|or r55|and r55|eq r55|neq r55|+ r55|- r55|* r55|/ r55|mod r55|[ s146
-; s147|or s109
-< r31|<= r31|>= r31|> r31|; r31|or r31|and r31|eq r31|neq r31|+ r31|- r31|* r31|/ r31|mod r31|[ r31|( s123
-block g26|stmt g27|loc g28|id s29|{ s30|} s148|if s32|while s33|do s34|return s35
-< r55|<= r55|>= r55|> r55|) r55|or r55|and r55|eq r55|neq r55|+ r55|- r55|* r55|/ r55|mod r55|[ s149
-) s150|or s151
-) r33|or r33|and s152
-) r35|or r35|and r35|eq s153|neq s154
-) r38|or r38|and r38|eq r38|neq r38
-) r43|or r43|and r43|eq r43|neq r43|< s155|<= s156|>= s157|> s158|+ s159|- s160
-< r46|<= r46|>= r46|> r46|) r46|or r46|and r46|eq r46|neq r46|+ r46|- r46|* s161|/ s162|mod s163
-< r50|<= r50|>= r50|> r50|) r50|or r50|and r50|eq r50|neq r50|+ r50|- r50|* r50|/ r50|mod r50
-< r53|<= r53|>= r53|> r53|) r53|or r53|and r53|eq r53|neq r53|+ r53|- r53|* r53|/ r53|mod r53
-< r31|<= r31|>= r31|> r31|) r31|or r31|and r31|eq r31|neq r31|+ r31|- r31|* r31|/ r31|mod r31|[ r31|( s164
-loc g82|bool g165|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g82|unary g166|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g82|unary g167|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-< r57|<= r57|>= r57|> r57|) r57|or r57|and r57|eq r57|neq r57|+ r57|- r57|* r57|/ r57|mod r57
-< r58|<= r58|>= r58|> r58|) r58|or r58|and r58|eq r58|neq r58|+ r58|- r58|* r58|/ r58|mod r58
-< r59|<= r59|>= r59|> r59|) r59|or r59|and r59|eq r59|neq r59|+ r59|- r59|* r59|/ r59|mod r59
-< r60|<= r60|>= r60|> r60|) r60|or r60|and r60|eq r60|neq r60|+ r60|- r60|* r60|/ r60|mod r60
-loc g82|bool g168|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
+( r28 | N g41
+id r28 | if r28 | while r28 | do r28 | return r28 | { r28 | else r28 | } r28 | N g42
+loc g43 | bool g44 | arg g45 | join g46 | equality g47 | rel g48 | expr g49 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+} r12 | id r12 | if r12 | while r12 | do r12 | return r12 | { r12 | basic r12
+loc g61 | bool g62 | join g63 | equality g64 | rel g65 | expr g66 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g78 | bool g79 | join g46 | equality g47 | rel g48 | expr g49 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+} r16 | id r16 | if r16 | while r16 | do r16 | return r16 | { r16 | else r16 | type g22 | stmts g80 | decl g24 | basic s11
+loc g81 | bool g82 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+( s98
+block g99 | stmt g100 | loc g101 | id s29 | { s102 | if s103 | while s104 | do s105 | return s106
+; r55 | or r55 | and r55 | eq r55 | neq r55 | < r55 | <= r55 | >= r55 | > r55 | + r55 | - r55 | * r55 | / r55 | mod r55 | [ s107
+; r62 | or s108
+; s109
+; r33 | or r33 | and s110
+; r35 | or r35 | and r35 | eq s111 | neq s112
+; r38 | or r38 | and r38 | eq r38 | neq r38 | < s113 | <= s114 | >= s115 | > s116
+; r43 | or r43 | and r43 | eq r43 | neq r43 | < r43 | <= r43 | >= r43 | > r43 | + s117 | - s118
+; r46 | or r46 | and r46 | eq r46 | neq r46 | < r46 | <= r46 | >= r46 | > r46 | + r46 | - r46 | * s119 | / s120 | mod s121
+; r50 | or r50 | and r50 | eq r50 | neq r50 | < r50 | <= r50 | >= r50 | > r50 | + r50 | - r50 | * r50 | / r50 | mod r50
+; r53 | or r53 | and r53 | eq r53 | neq r53 | < r53 | <= r53 | >= r53 | > r53 | + r53 | - r53 | * r53 | / r53 | mod r53
+; r31 | [ r31 | or r31 | and r31 | eq r31 | neq r31 | < r31 | <= r31 | >= r31 | > r31 | + r31 | - r31 | * r31 | / r31 | mod r31 | ( s122
+loc g81 | bool g123 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+; r57 | or r57 | and r57 | eq r57 | neq r57 | < r57 | <= r57 | >= r57 | > r57 | + r57 | - r57 | * r57 | / r57 | mod r57
+loc g78 | unary g124 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g78 | unary g125 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+; r58 | or r58 | and r58 | eq r58 | neq r58 | < r58 | <= r58 | >= r58 | > r58 | + r58 | - r58 | * r58 | / r58 | mod r58
+; r59 | or r59 | and r59 | eq r59 | neq r59 | < r59 | <= r59 | >= r59 | > r59 | + r59 | - r59 | * r59 | / r59 | mod r59
+; r60 | or r60 | and r60 | eq r60 | neq r60 | < r60 | <= r60 | >= r60 | > r60 | + r60 | - r60 | * r60 | / r60 | mod r60
+] r55 | or r55 | and r55 | eq r55 | neq r55 | < r55 | <= r55 | >= r55 | > r55 | + r55 | - r55 | * r55 | / r55 | mod r55 | [ s126
+] s127 | or s128
+] r33 | or r33 | and s129
+] r35 | or r35 | and r35 | eq s130 | neq s131
+] r38 | or r38 | and r38 | eq r38 | neq r38 | < s132 | <= s133 | >= s134 | > s135
+] r43 | or r43 | and r43 | eq r43 | neq r43 | < r43 | <= r43 | >= r43 | > r43 | + s136 | - s137
+] r46 | or r46 | and r46 | eq r46 | neq r46 | < r46 | <= r46 | >= r46 | > r46 | + r46 | - r46 | * s138 | / s139 | mod s140
+] r50 | or r50 | and r50 | eq r50 | neq r50 | < r50 | <= r50 | >= r50 | > r50 | + r50 | - r50 | * r50 | / r50 | mod r50
+] r53 | or r53 | and r53 | eq r53 | neq r53 | < r53 | <= r53 | >= r53 | > r53 | + r53 | - r53 | * r53 | / r53 | mod r53
+] r31 | or r31 | and r31 | eq r31 | neq r31 | < r31 | <= r31 | >= r31 | > r31 | + r31 | - r31 | * r31 | / r31 | mod r31 | [ r31 | ( s141
+loc g81 | bool g142 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+] r57 | or r57 | and r57 | eq r57 | neq r57 | < r57 | <= r57 | >= r57 | > r57 | + r57 | - r57 | * r57 | / r57 | mod r57
+loc g61 | unary g143 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | unary g144 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+] r58 | or r58 | and r58 | eq r58 | neq r58 | < r58 | <= r58 | >= r58 | > r58 | + r58 | - r58 | * r58 | / r58 | mod r58
+] r59 | or r59 | and r59 | eq r59 | neq r59 | < r59 | <= r59 | >= r59 | > r59 | + r59 | - r59 | * r59 | / r59 | mod r59
+] r60 | or r60 | and r60 | eq r60 | neq r60 | < r60 | <= r60 | >= r60 | > r60 | + r60 | - r60 | * r60 | / r60 | mod r60
+; r55 | or r55 | and r55 | eq r55 | neq r55 | < r55 | <= r55 | >= r55 | > r55 | + r55 | - r55 | * r55 | / r55 | mod r55 | [ s107
+; s145 | or s108
+block g26 | stmt g27 | loc g28 | id s29 | { s30 | } s146 | if s32 | while s33 | do s34 | return s35
+) r55 | or r55 | and r55 | eq r55 | neq r55 | < r55 | <= r55 | >= r55 | > r55 | + r55 | - r55 | * r55 | / r55 | mod r55 | [ s147
+) s148 | or s149
+) r33 | or r33 | and s150
+) r35 | or r35 | and r35 | eq s151 | neq s152
+) r38 | or r38 | and r38 | eq r38 | neq r38 | < s153 | <= s154 | >= s155 | > s156
+) r43 | or r43 | and r43 | eq r43 | neq r43 | < r43 | <= r43 | >= r43 | > r43 | + s157 | - s158
+) r46 | or r46 | and r46 | eq r46 | neq r46 | < r46 | <= r46 | >= r46 | > r46 | + r46 | - r46 | * s159 | / s160 | mod s161
+) r50 | or r50 | and r50 | eq r50 | neq r50 | < r50 | <= r50 | >= r50 | > r50 | + r50 | - r50 | * r50 | / r50 | mod r50
+) r53 | or r53 | and r53 | eq r53 | neq r53 | < r53 | <= r53 | >= r53 | > r53 | + r53 | - r53 | * r53 | / r53 | mod r53
+) r31 | or r31 | and r31 | eq r31 | neq r31 | < r31 | <= r31 | >= r31 | > r31 | + r31 | - r31 | * r31 | / r31 | mod r31 | [ r31 | ( s162
+loc g81 | bool g163 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+) r57 | or r57 | and r57 | eq r57 | neq r57 | < r57 | <= r57 | >= r57 | > r57 | + r57 | - r57 | * r57 | / r57 | mod r57
+loc g81 | unary g164 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | unary g165 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+) r58 | or r58 | and r58 | eq r58 | neq r58 | < r58 | <= r58 | >= r58 | > r58 | + r58 | - r58 | * r58 | / r58 | mod r58
+) r59 | or r59 | and r59 | eq r59 | neq r59 | < r59 | <= r59 | >= r59 | > r59 | + r59 | - r59 | * r59 | / r59 | mod r59
+) r60 | or r60 | and r60 | eq r60 | neq r60 | < r60 | <= r60 | >= r60 | > r60 | + r60 | - r60 | * r60 | / r60 | mod r60
+loc g81 | bool g166 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
 while r23
-while s169
-[ s37|= s170
-[ r11|id r11|if r11|while r11|do r11|return r11|{ r11|} r11|basic r11|decls g171
-( s172
-( r28|[ r28|id r28|if r28|while r28|do r28|return r28|{ r28|N g173
-( r28|[ r28|id r28|if r28|while r28|do r28|return r28|{ r28|N g174
-loc g43|bool g44|join g45|equality g46|rel g47|expr g48|term g49|unary g50|factor g51|arg g175|id s53|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-loc g61|bool g176|join g63|equality g64|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g78|join g177|equality g46|rel g47|expr g48|term g49|unary g50|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-loc g78|equality g178|rel g47|expr g48|term g49|unary g50|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-loc g78|rel g179|expr g48|term g49|unary g50|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-loc g78|rel g180|expr g48|term g49|unary g50|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-loc g181|expr g182|term g183|unary g184|factor g185|id s186|( s187|- s188|! s189|num s190|real s191|true s192|false s193
-loc g181|expr g194|term g183|unary g184|factor g185|id s186|( s187|- s188|! s189|num s190|real s191|true s192|false s193
-loc g181|expr g195|term g183|unary g184|factor g185|id s186|( s187|- s188|! s189|num s190|real s191|true s192|false s193
-loc g181|expr g196|term g183|unary g184|factor g185|id s186|( s187|- s188|! s189|num s190|real s191|true s192|false s193
-loc g78|term g197|unary g50|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-loc g78|term g198|unary g50|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-loc g78|unary g199|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-loc g78|unary g200|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-loc g78|unary g201|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-} r22|[ r22|id r22|if r22|while r22|do r22|return r22|{ r22|else r22
-) r26|, r26|args g202|loc g203|bool g204|join g205|equality g206|rel g207|expr g208|term g209|unary g210|factor g211|arg g212|id s213|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-) s221|or s151
-< r52|<= r52|>= r52|> r52|; r52|or r52|and r52|eq r52|neq r52|+ r52|- r52|* r52|/ r52|mod r52
-< r51|<= r51|>= r51|> r51|; r51|or r51|and r51|eq r51|neq r51|+ r51|- r51|* r51|/ r51|mod r51
-loc g61|bool g222|join g63|equality g64|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-= r30|[ r30
-loc g61|join g223|equality g64|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g61|equality g224|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g61|rel g225|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g61|rel g226|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g227|expr g228|term g229|unary g230|factor g231|id s232|( s233|- s234|! s235|num s236|real s237|true s238|false s239
-loc g227|expr g240|term g229|unary g230|factor g231|id s232|( s233|- s234|! s235|num s236|real s237|true s238|false s239
-loc g227|expr g241|term g229|unary g230|factor g231|id s232|( s233|- s234|! s235|num s236|real s237|true s238|false s239
-loc g227|expr g242|term g229|unary g230|factor g231|id s232|( s233|- s234|! s235|num s236|real s237|true s238|false s239
-loc g61|term g243|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g61|term g244|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g61|unary g245|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g61|unary g246|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g61|unary g247|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-) r26|, r26|args g248|loc g203|bool g204|join g205|equality g206|rel g207|expr g208|term g209|unary g210|factor g211|arg g212|id s213|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-) s249|or s151
-< r52|<= r52|>= r52|> r52|] r52|or r52|and r52|eq r52|neq r52|+ r52|- r52|* r52|/ r52|mod r52
-< r51|<= r51|>= r51|> r51|] r51|or r51|and r51|eq r51|neq r51|+ r51|- r51|* r51|/ r51|mod r51
-loc g61|bool g250|join g63|equality g64|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-} r17|[ r17|id r17|if r17|while r17|do r17|return r17|{ r17|else r17
-} r9|[ r9|id r9|if r9|while r9|do r9|return r9|{ r9|else r9
-loc g61|bool g251|join g63|equality g64|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g252
-loc g82|join g253|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g82|equality g254|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g82|rel g255|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g82|rel g256|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g257|expr g258|term g259|unary g260|factor g261|id s262|( s263|- s264|! s265|num s266|real s267|true s268|false s269
-loc g257|expr g270|term g259|unary g260|factor g261|id s262|( s263|- s264|! s265|num s266|real s267|true s268|false s269
-loc g257|expr g271|term g259|unary g260|factor g261|id s262|( s263|- s264|! s265|num s266|real s267|true s268|false s269
-loc g257|expr g272|term g259|unary g260|factor g261|id s262|( s263|- s264|! s265|num s266|real s267|true s268|false s269
-loc g82|term g273|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g82|term g274|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g82|unary g275|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g82|unary g276|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g82|unary g277|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-) r26|, r26|args g278|loc g203|bool g204|join g205|equality g206|rel g207|expr g208|term g209|unary g210|factor g211|arg g212|id s213|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-) s279|or s151
-< r52|<= r52|>= r52|> r52|) r52|or r52|and r52|eq r52|neq r52|+ r52|- r52|* r52|/ r52|mod r52
-< r51|<= r51|>= r51|> r51|) r51|or r51|and r51|eq r51|neq r51|+ r51|- r51|* r51|/ r51|mod r51
-) s280|or s151
-( s281
-loc g78|bool g282|join g45|equality g46|rel g47|expr g48|term g49|unary g50|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-} r16|[ r16|id r16|if r16|while r16|do r16|return r16|{ r16|else r16|decl g22|type g23|stmts g283|basic s11
-loc g82|bool g284|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-( s285
-block g100|stmt g286|loc g102|id s29|{ s103|if s104|while s105|do s106|return s107
-; s287
-] s288|or s129
-; r32|or r32|and s110
-; r34|or r34|and r34|eq s111|neq s112
-; r36|or r36|and r36|eq r36|neq r36
-; r37|or r37|and r37|eq r37|neq r37
-; r55|or r55|and r55|eq r55|neq r55|+ r55|- r55|* r55|/ r55|mod r55|[ s289
-; r39|or r39|and r39|eq r39|neq r39|+ s290|- s291
-; r46|or r46|and r46|eq r46|neq r46|+ r46|- r46|* s292|/ s293|mod s294
-; r50|or r50|and r50|eq r50|neq r50|+ r50|- r50|* r50|/ r50|mod r50
-; r53|or r53|and r53|eq r53|neq r53|+ r53|- r53|* r53|/ r53|mod r53
-; r31|or r31|and r31|eq r31|neq r31|+ r31|- r31|* r31|/ r31|mod r31|[ r31|( s295
-loc g82|bool g296|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g181|unary g297|factor g185|id s186|( s187|- s188|! s189|num s190|real s191|true s192|false s193
-loc g181|unary g298|factor g185|id s186|( s187|- s188|! s189|num s190|real s191|true s192|false s193
-; r57|or r57|and r57|eq r57|neq r57|+ r57|- r57|* r57|/ r57|mod r57
-; r58|or r58|and r58|eq r58|neq r58|+ r58|- r58|* r58|/ r58|mod r58
-; r59|or r59|and r59|eq r59|neq r59|+ r59|- r59|* r59|/ r59|mod r59
-; r60|or r60|and r60|eq r60|neq r60|+ r60|- r60|* r60|/ r60|mod r60
-; r40|or r40|and r40|eq r40|neq r40|+ s290|- s291
-; r41|or r41|and r41|eq r41|neq r41|+ s290|- s291
-; r42|or r42|and r42|eq r42|neq r42|+ s290|- s291
-< r44|<= r44|>= r44|> r44|; r44|or r44|and r44|eq r44|neq r44|+ r44|- r44|* s119|/ s120|mod s121
-< r45|<= r45|>= r45|> r45|; r45|or r45|and r45|eq r45|neq r45|+ r45|- r45|* s119|/ s120|mod s121
-< r47|<= r47|>= r47|> r47|; r47|or r47|and r47|eq r47|neq r47|+ r47|- r47|* r47|/ r47|mod r47
-< r48|<= r48|>= r48|> r48|; r48|or r48|and r48|eq r48|neq r48|+ r48|- r48|* r48|/ r48|mod r48
-< r49|<= r49|>= r49|> r49|; r49|or r49|and r49|eq r49|neq r49|+ r49|- r49|* r49|/ r49|mod r49
-) s299|, s300
-) r55|, r55|< r55|<= r55|>= r55|> r55|or r55|and r55|eq r55|neq r55|+ r55|- r55|* r55|/ r55|mod r55|[ s301
-) r62|, r62|or s302
-) r33|, r33|or r33|and s303
-) r35|, r35|or r35|and r35|eq s304|neq s305
-) r38|, r38|or r38|and r38|eq r38|neq r38
-) r43|, r43|or r43|and r43|eq r43|neq r43|< s306|<= s307|>= s308|> s309|+ s310|- s311
-< r46|<= r46|>= r46|> r46|) r46|, r46|or r46|and r46|eq r46|neq r46|+ r46|- r46|* s312|/ s313|mod s314
-< r50|<= r50|>= r50|> r50|) r50|, r50|or r50|and r50|eq r50|neq r50|+ r50|- r50|* r50|/ r50|mod r50
-< r53|<= r53|>= r53|> r53|) r53|, r53|or r53|and r53|eq r53|neq r53|+ r53|- r53|* r53|/ r53|mod r53
-) r25|, r25
-) r31|, r31|[ r31|< r31|<= r31|>= r31|> r31|or r31|and r31|eq r31|neq r31|+ r31|- r31|* r31|/ r31|mod r31|( s315
-loc g82|bool g316|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g317|unary g318|factor g211|id s319|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-loc g317|unary g320|factor g211|id s319|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-< r57|<= r57|>= r57|> r57|) r57|, r57|or r57|and r57|eq r57|neq r57|+ r57|- r57|* r57|/ r57|mod r57
-< r58|<= r58|>= r58|> r58|) r58|, r58|or r58|and r58|eq r58|neq r58|+ r58|- r58|* r58|/ r58|mod r58
-< r59|<= r59|>= r59|> r59|) r59|, r59|or r59|and r59|eq r59|neq r59|+ r59|- r59|* r59|/ r59|mod r59
-< r60|<= r60|>= r60|> r60|) r60|, r60|or r60|and r60|eq r60|neq r60|+ r60|- r60|* r60|/ r60|mod r60
-< r54|<= r54|>= r54|> r54|; r54|or r54|and r54|eq r54|neq r54|+ r54|- r54|* r54|/ r54|mod r54
-] s321|or s129
-] r32|or r32|and s130
-] r34|or r34|and r34|eq s131|neq s132
-] r36|or r36|and r36|eq r36|neq r36
-] r37|or r37|and r37|eq r37|neq r37
-] r55|or r55|and r55|eq r55|neq r55|+ r55|- r55|* r55|/ r55|mod r55|[ s322
-] r39|or r39|and r39|eq r39|neq r39|+ s323|- s324
-] r46|or r46|and r46|eq r46|neq r46|+ r46|- r46|* s325|/ s326|mod s327
-] r50|or r50|and r50|eq r50|neq r50|+ r50|- r50|* r50|/ r50|mod r50
-] r53|or r53|and r53|eq r53|neq r53|+ r53|- r53|* r53|/ r53|mod r53
-] r31|or r31|and r31|eq r31|neq r31|+ r31|- r31|* r31|/ r31|mod r31|[ r31|( s328
-loc g82|bool g329|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g227|unary g330|factor g231|id s232|( s233|- s234|! s235|num s236|real s237|true s238|false s239
-loc g227|unary g331|factor g231|id s232|( s233|- s234|! s235|num s236|real s237|true s238|false s239
-] r57|or r57|and r57|eq r57|neq r57|+ r57|- r57|* r57|/ r57|mod r57
-] r58|or r58|and r58|eq r58|neq r58|+ r58|- r58|* r58|/ r58|mod r58
-] r59|or r59|and r59|eq r59|neq r59|+ r59|- r59|* r59|/ r59|mod r59
-] r60|or r60|and r60|eq r60|neq r60|+ r60|- r60|* r60|/ r60|mod r60
-] r40|or r40|and r40|eq r40|neq r40|+ s323|- s324
-] r41|or r41|and r41|eq r41|neq r41|+ s323|- s324
-] r42|or r42|and r42|eq r42|neq r42|+ s323|- s324
-< r44|<= r44|>= r44|> r44|] r44|or r44|and r44|eq r44|neq r44|+ r44|- r44|* s139|/ s140|mod s141
-< r45|<= r45|>= r45|> r45|] r45|or r45|and r45|eq r45|neq r45|+ r45|- r45|* s139|/ s140|mod s141
-< r47|<= r47|>= r47|> r47|] r47|or r47|and r47|eq r47|neq r47|+ r47|- r47|* r47|/ r47|mod r47
-< r48|<= r48|>= r48|> r48|] r48|or r48|and r48|eq r48|neq r48|+ r48|- r48|* r48|/ r48|mod r48
-< r49|<= r49|>= r49|> r49|] r49|or r49|and r49|eq r49|neq r49|+ r49|- r49|* r49|/ r49|mod r49
-) s332|, s300
-< r54|<= r54|>= r54|> r54|] r54|or r54|and r54|eq r54|neq r54|+ r54|- r54|* r54|/ r54|mod r54
-] s333|or s129
-] s334|or s129
-block g335|stmt g336|loc g337|id s29|{ s338|if s339|while s340|do s341|return s342
-) r32|or r32|and s152
-) r34|or r34|and r34|eq s153|neq s154
-) r36|or r36|and r36|eq r36|neq r36
-) r37|or r37|and r37|eq r37|neq r37
-) r55|or r55|and r55|eq r55|neq r55|+ r55|- r55|* r55|/ r55|mod r55|[ s343
-) r39|or r39|and r39|eq r39|neq r39|+ s344|- s345
-) r46|or r46|and r46|eq r46|neq r46|+ r46|- r46|* s346|/ s347|mod s348
-) r50|or r50|and r50|eq r50|neq r50|+ r50|- r50|* r50|/ r50|mod r50
-) r53|or r53|and r53|eq r53|neq r53|+ r53|- r53|* r53|/ r53|mod r53
-) r31|or r31|and r31|eq r31|neq r31|+ r31|- r31|* r31|/ r31|mod r31|[ r31|( s349
-loc g82|bool g350|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g257|unary g351|factor g261|id s262|( s263|- s264|! s265|num s266|real s267|true s268|false s269
-loc g257|unary g352|factor g261|id s262|( s263|- s264|! s265|num s266|real s267|true s268|false s269
-) r57|or r57|and r57|eq r57|neq r57|+ r57|- r57|* r57|/ r57|mod r57
-) r58|or r58|and r58|eq r58|neq r58|+ r58|- r58|* r58|/ r58|mod r58
-) r59|or r59|and r59|eq r59|neq r59|+ r59|- r59|* r59|/ r59|mod r59
-) r60|or r60|and r60|eq r60|neq r60|+ r60|- r60|* r60|/ r60|mod r60
-) r40|or r40|and r40|eq r40|neq r40|+ s344|- s345
-) r41|or r41|and r41|eq r41|neq r41|+ s344|- s345
-) r42|or r42|and r42|eq r42|neq r42|+ s344|- s345
-< r44|<= r44|>= r44|> r44|) r44|or r44|and r44|eq r44|neq r44|+ r44|- r44|* s161|/ s162|mod s163
-< r45|<= r45|>= r45|> r45|) r45|or r45|and r45|eq r45|neq r45|+ r45|- r45|* s161|/ s162|mod s163
-< r47|<= r47|>= r47|> r47|) r47|or r47|and r47|eq r47|neq r47|+ r47|- r47|* r47|/ r47|mod r47
-< r48|<= r48|>= r48|> r48|) r48|or r48|and r48|eq r48|neq r48|+ r48|- r48|* r48|/ r48|mod r48
-< r49|<= r49|>= r49|> r49|) r49|or r49|and r49|eq r49|neq r49|+ r49|- r49|* r49|/ r49|mod r49
-) s353|, s300
-< r54|<= r54|>= r54|> r54|) r54|or r54|and r54|eq r54|neq r54|+ r54|- r54|* r54|/ r54|mod r54
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g354
-loc g82|bool g355|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-; s356|or s109
-block g26|stmt g27|loc g28|id s29|{ s30|} s357|if s32|while s33|do s34|return s35
-) s358|or s151
-loc g82|bool g359|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-while s360
+while s167
+[ s37 | = s168
+} r11 | id r11 | if r11 | while r11 | do r11 | return r11 | { r11 | basic r11 | decls g169
+( s170
+( r28 | N g171
+id r28 | if r28 | while r28 | do r28 | return r28 | { r28 | else r28 | } r28 | N g172
+loc g43 | bool g44 | arg g173 | join g46 | equality g47 | rel g48 | expr g49 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g61 | bool g174 | join g63 | equality g64 | rel g65 | expr g66 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g78 | join g175 | equality g47 | rel g48 | expr g49 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+} r22 | id r22 | if r22 | while r22 | do r22 | return r22 | { r22 | else r22
+loc g78 | equality g176 | rel g48 | expr g49 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g78 | rel g177 | expr g49 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g78 | rel g178 | expr g49 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g78 | expr g179 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g78 | expr g180 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g78 | expr g181 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g78 | expr g182 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g78 | term g183 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g78 | term g184 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g78 | unary g185 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g78 | unary g186 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+loc g78 | unary g187 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+) r26 | , r26 | loc g188 | bool g189 | arg g190 | args g191 | join g192 | equality g193 | rel g194 | expr g195 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+) s207 | or s149
+; r52 | or r52 | and r52 | eq r52 | neq r52 | < r52 | <= r52 | >= r52 | > r52 | + r52 | - r52 | * r52 | / r52 | mod r52
+; r51 | or r51 | and r51 | eq r51 | neq r51 | < r51 | <= r51 | >= r51 | > r51 | + r51 | - r51 | * r51 | / r51 | mod r51
+loc g61 | bool g208 | join g63 | equality g64 | rel g65 | expr g66 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+= r30 | [ r30
+loc g61 | join g209 | equality g64 | rel g65 | expr g66 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | equality g210 | rel g65 | expr g66 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | rel g211 | expr g66 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | rel g212 | expr g66 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | expr g213 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | expr g214 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | expr g215 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | expr g216 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | term g217 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | term g218 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | unary g219 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | unary g220 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g61 | unary g221 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+) r26 | , r26 | loc g188 | bool g189 | arg g190 | args g222 | join g192 | equality g193 | rel g194 | expr g195 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+) s223 | or s149
+] r52 | or r52 | and r52 | eq r52 | neq r52 | < r52 | <= r52 | >= r52 | > r52 | + r52 | - r52 | * r52 | / r52 | mod r52
+] r51 | or r51 | and r51 | eq r51 | neq r51 | < r51 | <= r51 | >= r51 | > r51 | + r51 | - r51 | * r51 | / r51 | mod r51
+} r17 | id r17 | if r17 | while r17 | do r17 | return r17 | { r17 | else r17
+} r9 | id r9 | if r9 | while r9 | do r9 | return r9 | { r9 | else r9
+loc g61 | bool g224 | join g63 | equality g64 | rel g65 | expr g66 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+id r27 | if r27 | while r27 | do r27 | return r27 | { r27 | else r27 | } r27 | M g225
+loc g81 | join g226 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | equality g227 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | rel g228 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | rel g229 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | expr g230 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | expr g231 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | expr g232 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | expr g233 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | term g234 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | term g235 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | unary g236 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | unary g237 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+loc g81 | unary g238 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+) r26 | , r26 | loc g188 | bool g189 | arg g190 | args g239 | join g192 | equality g193 | rel g194 | expr g195 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+) s240 | or s149
+) r52 | or r52 | and r52 | eq r52 | neq r52 | < r52 | <= r52 | >= r52 | > r52 | + r52 | - r52 | * r52 | / r52 | mod r52
+) r51 | or r51 | and r51 | eq r51 | neq r51 | < r51 | <= r51 | >= r51 | > r51 | + r51 | - r51 | * r51 | / r51 | mod r51
+) s241 | or s149
+( s242
+loc g78 | bool g243 | join g46 | equality g47 | rel g48 | expr g49 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+} r16 | id r16 | if r16 | while r16 | do r16 | return r16 | { r16 | else r16 | type g22 | stmts g244 | decl g24 | basic s11
+loc g81 | bool g245 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+( s246
+block g99 | stmt g247 | loc g101 | id s29 | { s102 | if s103 | while s104 | do s105 | return s106
+; s248
+] s249 | or s128
+; r32 | or r32 | and s110
+; r34 | or r34 | and r34 | eq s111 | neq s112
+; r36 | or r36 | and r36 | eq r36 | neq r36 | < s113 | <= s114 | >= s115 | > s116
+; r37 | or r37 | and r37 | eq r37 | neq r37 | < s113 | <= s114 | >= s115 | > s116
+; r39 | or r39 | and r39 | eq r39 | neq r39 | < r39 | <= r39 | >= r39 | > r39 | + s117 | - s118
+; r40 | or r40 | and r40 | eq r40 | neq r40 | < r40 | <= r40 | >= r40 | > r40 | + s117 | - s118
+; r41 | or r41 | and r41 | eq r41 | neq r41 | < r41 | <= r41 | >= r41 | > r41 | + s117 | - s118
+; r42 | or r42 | and r42 | eq r42 | neq r42 | < r42 | <= r42 | >= r42 | > r42 | + s117 | - s118
+; r44 | or r44 | and r44 | eq r44 | neq r44 | < r44 | <= r44 | >= r44 | > r44 | + r44 | - r44 | * s119 | / s120 | mod s121
+; r45 | or r45 | and r45 | eq r45 | neq r45 | < r45 | <= r45 | >= r45 | > r45 | + r45 | - r45 | * s119 | / s120 | mod s121
+; r47 | or r47 | and r47 | eq r47 | neq r47 | < r47 | <= r47 | >= r47 | > r47 | + r47 | - r47 | * r47 | / r47 | mod r47
+; r48 | or r48 | and r48 | eq r48 | neq r48 | < r48 | <= r48 | >= r48 | > r48 | + r48 | - r48 | * r48 | / r48 | mod r48
+; r49 | or r49 | and r49 | eq r49 | neq r49 | < r49 | <= r49 | >= r49 | > r49 | + r49 | - r49 | * r49 | / r49 | mod r49
+) r55 | , r55 | or r55 | and r55 | eq r55 | neq r55 | < r55 | <= r55 | >= r55 | > r55 | + r55 | - r55 | * r55 | / r55 | mod r55 | [ s250
+) r62 | , r62 | or s251
+) r25 | , r25
+) s252 | , s253
+) r33 | , r33 | or r33 | and s254
+) r35 | , r35 | or r35 | and r35 | eq s255 | neq s256
+) r38 | , r38 | or r38 | and r38 | eq r38 | neq r38 | < s257 | <= s258 | >= s259 | > s260
+) r43 | , r43 | or r43 | and r43 | eq r43 | neq r43 | < r43 | <= r43 | >= r43 | > r43 | + s261 | - s262
+) r46 | , r46 | or r46 | and r46 | eq r46 | neq r46 | < r46 | <= r46 | >= r46 | > r46 | + r46 | - r46 | * s263 | / s264 | mod s265
+) r50 | , r50 | or r50 | and r50 | eq r50 | neq r50 | < r50 | <= r50 | >= r50 | > r50 | + r50 | - r50 | * r50 | / r50 | mod r50
+) r53 | , r53 | or r53 | and r53 | eq r53 | neq r53 | < r53 | <= r53 | >= r53 | > r53 | + r53 | - r53 | * r53 | / r53 | mod r53
+) r31 | , r31 | [ r31 | or r31 | and r31 | eq r31 | neq r31 | < r31 | <= r31 | >= r31 | > r31 | + r31 | - r31 | * r31 | / r31 | mod r31 | ( s266
+loc g81 | bool g267 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+) r57 | , r57 | or r57 | and r57 | eq r57 | neq r57 | < r57 | <= r57 | >= r57 | > r57 | + r57 | - r57 | * r57 | / r57 | mod r57
+loc g268 | unary g269 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | unary g270 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+) r58 | , r58 | or r58 | and r58 | eq r58 | neq r58 | < r58 | <= r58 | >= r58 | > r58 | + r58 | - r58 | * r58 | / r58 | mod r58
+) r59 | , r59 | or r59 | and r59 | eq r59 | neq r59 | < r59 | <= r59 | >= r59 | > r59 | + r59 | - r59 | * r59 | / r59 | mod r59
+) r60 | , r60 | or r60 | and r60 | eq r60 | neq r60 | < r60 | <= r60 | >= r60 | > r60 | + r60 | - r60 | * r60 | / r60 | mod r60
+; r54 | or r54 | and r54 | eq r54 | neq r54 | < r54 | <= r54 | >= r54 | > r54 | + r54 | - r54 | * r54 | / r54 | mod r54
+] s271 | or s128
+] r32 | or r32 | and s129
+] r34 | or r34 | and r34 | eq s130 | neq s131
+] r36 | or r36 | and r36 | eq r36 | neq r36 | < s132 | <= s133 | >= s134 | > s135
+] r37 | or r37 | and r37 | eq r37 | neq r37 | < s132 | <= s133 | >= s134 | > s135
+] r39 | or r39 | and r39 | eq r39 | neq r39 | < r39 | <= r39 | >= r39 | > r39 | + s136 | - s137
+] r40 | or r40 | and r40 | eq r40 | neq r40 | < r40 | <= r40 | >= r40 | > r40 | + s136 | - s137
+] r41 | or r41 | and r41 | eq r41 | neq r41 | < r41 | <= r41 | >= r41 | > r41 | + s136 | - s137
+] r42 | or r42 | and r42 | eq r42 | neq r42 | < r42 | <= r42 | >= r42 | > r42 | + s136 | - s137
+] r44 | or r44 | and r44 | eq r44 | neq r44 | < r44 | <= r44 | >= r44 | > r44 | + r44 | - r44 | * s138 | / s139 | mod s140
+] r45 | or r45 | and r45 | eq r45 | neq r45 | < r45 | <= r45 | >= r45 | > r45 | + r45 | - r45 | * s138 | / s139 | mod s140
+] r47 | or r47 | and r47 | eq r47 | neq r47 | < r47 | <= r47 | >= r47 | > r47 | + r47 | - r47 | * r47 | / r47 | mod r47
+] r48 | or r48 | and r48 | eq r48 | neq r48 | < r48 | <= r48 | >= r48 | > r48 | + r48 | - r48 | * r48 | / r48 | mod r48
+] r49 | or r49 | and r49 | eq r49 | neq r49 | < r49 | <= r49 | >= r49 | > r49 | + r49 | - r49 | * r49 | / r49 | mod r49
+) s272 | , s253
+] r54 | or r54 | and r54 | eq r54 | neq r54 | < r54 | <= r54 | >= r54 | > r54 | + r54 | - r54 | * r54 | / r54 | mod r54
+] s273 | or s128
+block g26 | stmt g274 | loc g28 | id s29 | { s30 | if s32 | while s33 | do s34 | return s35
+) r32 | or r32 | and s150
+) r34 | or r34 | and r34 | eq s151 | neq s152
+) r36 | or r36 | and r36 | eq r36 | neq r36 | < s153 | <= s154 | >= s155 | > s156
+) r37 | or r37 | and r37 | eq r37 | neq r37 | < s153 | <= s154 | >= s155 | > s156
+) r39 | or r39 | and r39 | eq r39 | neq r39 | < r39 | <= r39 | >= r39 | > r39 | + s157 | - s158
+) r40 | or r40 | and r40 | eq r40 | neq r40 | < r40 | <= r40 | >= r40 | > r40 | + s157 | - s158
+) r41 | or r41 | and r41 | eq r41 | neq r41 | < r41 | <= r41 | >= r41 | > r41 | + s157 | - s158
+) r42 | or r42 | and r42 | eq r42 | neq r42 | < r42 | <= r42 | >= r42 | > r42 | + s157 | - s158
+) r44 | or r44 | and r44 | eq r44 | neq r44 | < r44 | <= r44 | >= r44 | > r44 | + r44 | - r44 | * s159 | / s160 | mod s161
+) r45 | or r45 | and r45 | eq r45 | neq r45 | < r45 | <= r45 | >= r45 | > r45 | + r45 | - r45 | * s159 | / s160 | mod s161
+) r47 | or r47 | and r47 | eq r47 | neq r47 | < r47 | <= r47 | >= r47 | > r47 | + r47 | - r47 | * r47 | / r47 | mod r47
+) r48 | or r48 | and r48 | eq r48 | neq r48 | < r48 | <= r48 | >= r48 | > r48 | + r48 | - r48 | * r48 | / r48 | mod r48
+) r49 | or r49 | and r49 | eq r49 | neq r49 | < r49 | <= r49 | >= r49 | > r49 | + r49 | - r49 | * r49 | / r49 | mod r49
+) s275 | , s253
+) r54 | or r54 | and r54 | eq r54 | neq r54 | < r54 | <= r54 | >= r54 | > r54 | + r54 | - r54 | * r54 | / r54 | mod r54
+id r27 | if r27 | while r27 | do r27 | return r27 | { r27 | else r27 | } r27 | M g276
+loc g81 | bool g277 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+; s278 | or s108
+block g26 | stmt g27 | loc g28 | id s29 | { s30 | } s279 | if s32 | while s33 | do s34 | return s35
+) s280 | or s149
+loc g81 | bool g281 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+while s282
 while r22
-; r30|[ r30|< r30|<= r30|>= r30|> r30|or r30|and r30|eq r30|neq r30|+ r30|- r30|* r30|/ r30|mod r30
-loc g61|bool g361|join g63|equality g64|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g181|term g362|unary g184|factor g185|id s186|( s187|- s188|! s189|num s190|real s191|true s192|false s193
-loc g181|term g363|unary g184|factor g185|id s186|( s187|- s188|! s189|num s190|real s191|true s192|false s193
-loc g181|unary g364|factor g185|id s186|( s187|- s188|! s189|num s190|real s191|true s192|false s193
-loc g181|unary g365|factor g185|id s186|( s187|- s188|! s189|num s190|real s191|true s192|false s193
-loc g181|unary g366|factor g185|id s186|( s187|- s188|! s189|num s190|real s191|true s192|false s193
-) r26|, r26|args g367|loc g203|bool g204|join g205|equality g206|rel g207|expr g208|term g209|unary g210|factor g211|arg g212|id s213|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-) s368|or s151
-; r52|or r52|and r52|eq r52|neq r52|+ r52|- r52|* r52|/ r52|mod r52
-; r51|or r51|and r51|eq r51|neq r51|+ r51|- r51|* r51|/ r51|mod r51
-< r56|<= r56|>= r56|> r56|; r56|or r56|and r56|eq r56|neq r56|+ r56|- r56|* r56|/ r56|mod r56
-loc g203|bool g204|join g205|equality g206|rel g207|expr g208|term g209|unary g210|factor g211|arg g369|id s213|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-loc g61|bool g370|join g63|equality g64|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g317|join g371|equality g206|rel g207|expr g208|term g209|unary g210|factor g211|id s319|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-loc g317|equality g372|rel g207|expr g208|term g209|unary g210|factor g211|id s319|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-loc g317|rel g373|expr g208|term g209|unary g210|factor g211|id s319|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-loc g317|rel g374|expr g208|term g209|unary g210|factor g211|id s319|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-loc g375|expr g376|term g377|unary g378|factor g379|id s380|( s381|- s382|! s383|num s384|real s385|true s386|false s387
-loc g375|expr g388|term g377|unary g378|factor g379|id s380|( s381|- s382|! s383|num s384|real s385|true s386|false s387
-loc g375|expr g389|term g377|unary g378|factor g379|id s380|( s381|- s382|! s383|num s384|real s385|true s386|false s387
-loc g375|expr g390|term g377|unary g378|factor g379|id s380|( s381|- s382|! s383|num s384|real s385|true s386|false s387
-loc g317|term g391|unary g210|factor g211|id s319|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-loc g317|term g392|unary g210|factor g211|id s319|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-loc g317|unary g393|factor g211|id s319|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-loc g317|unary g394|factor g211|id s319|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-loc g317|unary g395|factor g211|id s319|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-) r26|, r26|args g396|loc g203|bool g204|join g205|equality g206|rel g207|expr g208|term g209|unary g210|factor g211|arg g212|id s213|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-) s397|or s151
-< r55|<= r55|>= r55|> r55|) r55|, r55|or r55|and r55|eq r55|neq r55|+ r55|- r55|* r55|/ r55|mod r55|[ s398
-< r52|<= r52|>= r52|> r52|) r52|, r52|or r52|and r52|eq r52|neq r52|+ r52|- r52|* r52|/ r52|mod r52
-< r31|<= r31|>= r31|> r31|) r31|, r31|or r31|and r31|eq r31|neq r31|+ r31|- r31|* r31|/ r31|mod r31|[ r31|( s315
-< r51|<= r51|>= r51|> r51|) r51|, r51|or r51|and r51|eq r51|neq r51|+ r51|- r51|* r51|/ r51|mod r51
-< r30|<= r30|>= r30|> r30|] r30|or r30|and r30|eq r30|neq r30|+ r30|- r30|* r30|/ r30|mod r30|[ r30
-loc g61|bool g399|join g63|equality g64|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g227|term g400|unary g230|factor g231|id s232|( s233|- s234|! s235|num s236|real s237|true s238|false s239
-loc g227|term g401|unary g230|factor g231|id s232|( s233|- s234|! s235|num s236|real s237|true s238|false s239
-loc g227|unary g402|factor g231|id s232|( s233|- s234|! s235|num s236|real s237|true s238|false s239
-loc g227|unary g403|factor g231|id s232|( s233|- s234|! s235|num s236|real s237|true s238|false s239
-loc g227|unary g404|factor g231|id s232|( s233|- s234|! s235|num s236|real s237|true s238|false s239
-) r26|, r26|args g405|loc g203|bool g204|join g205|equality g206|rel g207|expr g208|term g209|unary g210|factor g211|arg g212|id s213|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-) s406|or s151
-] r52|or r52|and r52|eq r52|neq r52|+ r52|- r52|* r52|/ r52|mod r52
-] r51|or r51|and r51|eq r51|neq r51|+ r51|- r51|* r51|/ r51|mod r51
-< r56|<= r56|>= r56|> r56|] r56|or r56|and r56|eq r56|neq r56|+ r56|- r56|* r56|/ r56|mod r56
-< r30|<= r30|>= r30|> r30|; r30|or r30|and r30|eq r30|neq r30|+ r30|- r30|* r30|/ r30|mod r30|[ r30
-< r30|<= r30|>= r30|> r30|) r30|or r30|and r30|eq r30|neq r30|+ r30|- r30|* r30|/ r30|mod r30|[ r30
-} r23|else r23|[ r23|id r23|if r23|while r23|do r23|return r23|{ r23
-} r18|[ r18|id r18|if r18|while r18|do r18|return r18|{ r18|else s407
-[ s37|= s408
-[ r11|id r11|if r11|while r11|do r11|return r11|{ r11|} r11|basic r11|decls g409
-( s410
-( r28|[ r28|id r28|if r28|while r28|do r28|return r28|{ r28|N g411
-( r28|[ r28|id r28|if r28|while r28|do r28|return r28|{ r28|N g412
-loc g43|bool g44|join g45|equality g46|rel g47|expr g48|term g49|unary g50|factor g51|arg g413|id s53|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-loc g61|bool g414|join g63|equality g64|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g257|term g415|unary g260|factor g261|id s262|( s263|- s264|! s265|num s266|real s267|true s268|false s269
-loc g257|term g416|unary g260|factor g261|id s262|( s263|- s264|! s265|num s266|real s267|true s268|false s269
-loc g257|unary g417|factor g261|id s262|( s263|- s264|! s265|num s266|real s267|true s268|false s269
-loc g257|unary g418|factor g261|id s262|( s263|- s264|! s265|num s266|real s267|true s268|false s269
-loc g257|unary g419|factor g261|id s262|( s263|- s264|! s265|num s266|real s267|true s268|false s269
-) r26|, r26|args g420|loc g203|bool g204|join g205|equality g206|rel g207|expr g208|term g209|unary g210|factor g211|arg g212|id s213|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-) s421|or s151
-) r52|or r52|and r52|eq r52|neq r52|+ r52|- r52|* r52|/ r52|mod r52
-) r51|or r51|and r51|eq r51|neq r51|+ r51|- r51|* r51|/ r51|mod r51
-< r56|<= r56|>= r56|> r56|) r56|or r56|and r56|eq r56|neq r56|+ r56|- r56|* r56|/ r56|mod r56
-block g26|stmt g422|loc g28|id s29|{ s30|if s32|while s33|do s34|return s35
-) s423|or s151
+; r30 | [ r30 | or r30 | and r30 | eq r30 | neq r30 | < r30 | <= r30 | >= r30 | > r30 | + r30 | - r30 | * r30 | / r30 | mod r30
+loc g61 | bool g283 | join g63 | equality g64 | rel g65 | expr g66 | term g67 | unary g68 | factor g69 | id s70 | ( s71 | num s72 | - s73 | ! s74 | real s75 | true s76 | false s77
+loc g268 | join g284 | equality g193 | rel g194 | expr g195 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+; r56 | or r56 | and r56 | eq r56 | neq r56 | < r56 | <= r56 | >= r56 | > r56 | + r56 | - r56 | * r56 | / r56 | mod r56
+loc g188 | bool g189 | arg g285 | join g192 | equality g193 | rel g194 | expr g195 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | equality g286 | rel g194 | expr g195 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | rel g287 | expr g195 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | rel g288 | expr g195 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | expr g289 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | expr g290 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | expr g291 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | expr g292 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | term g293 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | term g294 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | unary g295 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | unary g296 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+loc g268 | unary g297 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+) r26 | , r26 | loc g188 | bool g189 | arg g190 | args g298 | join g192 | equality g193 | rel g194 | expr g195 | term g196 | unary g197 | factor g198 | id s199 | ( s200 | num s201 | - s202 | ! s203 | real s204 | true s205 | false s206
+) s299 | or s149
+) r55 | , r55 | or r55 | and r55 | eq r55 | neq r55 | < r55 | <= r55 | >= r55 | > r55 | + r55 | - r55 | * r55 | / r55 | mod r55 | [ s250
+) r52 | , r52 | or r52 | and r52 | eq r52 | neq r52 | < r52 | <= r52 | >= r52 | > r52 | + r52 | - r52 | * r52 | / r52 | mod r52
+) r51 | , r51 | or r51 | and r51 | eq r51 | neq r51 | < r51 | <= r51 | >= r51 | > r51 | + r51 | - r51 | * r51 | / r51 | mod r51
+] r30 | or r30 | and r30 | eq r30 | neq r30 | < r30 | <= r30 | >= r30 | > r30 | + r30 | - r30 | * r30 | / r30 | mod r30 | [ r30
+] r56 | or r56 | and r56 | eq r56 | neq r56 | < r56 | <= r56 | >= r56 | > r56 | + r56 | - r56 | * r56 | / r56 | mod r56
+) r30 | or r30 | and r30 | eq r30 | neq r30 | < r30 | <= r30 | >= r30 | > r30 | + r30 | - r30 | * r30 | / r30 | mod r30 | [ r30
+} r18 | id r18 | if r18 | while r18 | do r18 | return r18 | { r18 | else s300
+) r56 | or r56 | and r56 | eq r56 | neq r56 | < r56 | <= r56 | >= r56 | > r56 | + r56 | - r56 | * r56 | / r56 | mod r56
+block g26 | stmt g301 | loc g28 | id s29 | { s30 | if s32 | while s33 | do s34 | return s35
+) s302 | or s149
 while r17
 while r9
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g424
-) s425|or s151
-( s426
-] s427|or s129
-; r44|or r44|and r44|eq r44|neq r44|+ r44|- r44|* s292|/ s293|mod s294
-; r45|or r45|and r45|eq r45|neq r45|+ r45|- r45|* s292|/ s293|mod s294
-; r47|or r47|and r47|eq r47|neq r47|+ r47|- r47|* r47|/ r47|mod r47
-; r48|or r48|and r48|eq r48|neq r48|+ r48|- r48|* r48|/ r48|mod r48
-; r49|or r49|and r49|eq r49|neq r49|+ r49|- r49|* r49|/ r49|mod r49
-) s428|, s300
-; r54|or r54|and r54|eq r54|neq r54|+ r54|- r54|* r54|/ r54|mod r54
-) r24|, r24
-] s429|or s129
-) r32|, r32|or r32|and s303
-) r34|, r34|or r34|and r34|eq s304|neq s305
-) r36|, r36|or r36|and r36|eq r36|neq r36
-) r37|, r37|or r37|and r37|eq r37|neq r37
-) r55|, r55|or r55|and r55|eq r55|neq r55|+ r55|- r55|* r55|/ r55|mod r55|[ s430
-) r39|, r39|or r39|and r39|eq r39|neq r39|+ s431|- s432
-) r46|, r46|or r46|and r46|eq r46|neq r46|+ r46|- r46|* s433|/ s434|mod s435
-) r50|, r50|or r50|and r50|eq r50|neq r50|+ r50|- r50|* r50|/ r50|mod r50
-) r53|, r53|or r53|and r53|eq r53|neq r53|+ r53|- r53|* r53|/ r53|mod r53
-) r31|, r31|or r31|and r31|eq r31|neq r31|+ r31|- r31|* r31|/ r31|mod r31|[ r31|( s436
-loc g82|bool g437|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-loc g375|unary g438|factor g379|id s380|( s381|- s382|! s383|num s384|real s385|true s386|false s387
-loc g375|unary g439|factor g379|id s380|( s381|- s382|! s383|num s384|real s385|true s386|false s387
-) r57|, r57|or r57|and r57|eq r57|neq r57|+ r57|- r57|* r57|/ r57|mod r57
-) r58|, r58|or r58|and r58|eq r58|neq r58|+ r58|- r58|* r58|/ r58|mod r58
-) r59|, r59|or r59|and r59|eq r59|neq r59|+ r59|- r59|* r59|/ r59|mod r59
-) r60|, r60|or r60|and r60|eq r60|neq r60|+ r60|- r60|* r60|/ r60|mod r60
-) r40|, r40|or r40|and r40|eq r40|neq r40|+ s431|- s432
-) r41|, r41|or r41|and r41|eq r41|neq r41|+ s431|- s432
-) r42|, r42|or r42|and r42|eq r42|neq r42|+ s431|- s432
-< r44|<= r44|>= r44|> r44|) r44|, r44|or r44|and r44|eq r44|neq r44|+ r44|- r44|* s312|/ s313|mod s314
-< r45|<= r45|>= r45|> r45|) r45|, r45|or r45|and r45|eq r45|neq r45|+ r45|- r45|* s312|/ s313|mod s314
-< r47|<= r47|>= r47|> r47|) r47|, r47|or r47|and r47|eq r47|neq r47|+ r47|- r47|* r47|/ r47|mod r47
-< r48|<= r48|>= r48|> r48|) r48|, r48|or r48|and r48|eq r48|neq r48|+ r48|- r48|* r48|/ r48|mod r48
-< r49|<= r49|>= r49|> r49|) r49|, r49|or r49|and r49|eq r49|neq r49|+ r49|- r49|* r49|/ r49|mod r49
-) s440|, s300
-< r54|<= r54|>= r54|> r54|) r54|, r54|or r54|and r54|eq r54|neq r54|+ r54|- r54|* r54|/ r54|mod r54
-loc g61|bool g441|join g63|equality g64|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-] s442|or s129
-] r44|or r44|and r44|eq r44|neq r44|+ r44|- r44|* s325|/ s326|mod s327
-] r45|or r45|and r45|eq r45|neq r45|+ r45|- r45|* s325|/ s326|mod s327
-] r47|or r47|and r47|eq r47|neq r47|+ r47|- r47|* r47|/ r47|mod r47
-] r48|or r48|and r48|eq r48|neq r48|+ r48|- r48|* r48|/ r48|mod r48
-] r49|or r49|and r49|eq r49|neq r49|+ r49|- r49|* r49|/ r49|mod r49
-) s443|, s300
-] r54|or r54|and r54|eq r54|neq r54|+ r54|- r54|* r54|/ r54|mod r54
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g444
-loc g78|bool g445|join g45|equality g46|rel g47|expr g48|term g49|unary g50|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-} r16|[ r16|id r16|if r16|while r16|do r16|return r16|{ r16|else r16|decl g22|type g23|stmts g446|basic s11
-loc g82|bool g447|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-( s448
-block g100|stmt g449|loc g102|id s29|{ s103|if s104|while s105|do s106|return s107
-; s450
-] s451|or s129
-) r44|or r44|and r44|eq r44|neq r44|+ r44|- r44|* s346|/ s347|mod s348
-) r45|or r45|and r45|eq r45|neq r45|+ r45|- r45|* s346|/ s347|mod s348
-) r47|or r47|and r47|eq r47|neq r47|+ r47|- r47|* r47|/ r47|mod r47
-) r48|or r48|and r48|eq r48|neq r48|+ r48|- r48|* r48|/ r48|mod r48
-) r49|or r49|and r49|eq r49|neq r49|+ r49|- r49|* r49|/ r49|mod r49
-) s452|, s300
-) r54|or r54|and r54|eq r54|neq r54|+ r54|- r54|* r54|/ r54|mod r54
-} r20|[ r20|id r20|if r20|while r20|do r20|return r20|{ r20|else r20
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g453
-block g454|stmt g455|loc g456|id s29|{ s457|if s458|while s459|do s460|return s461
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g462
-loc g82|bool g463|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-; r30|or r30|and r30|eq r30|neq r30|+ r30|- r30|* r30|/ r30|mod r30|[ r30
-; r56|or r56|and r56|eq r56|neq r56|+ r56|- r56|* r56|/ r56|mod r56
-) r30|, r30|[ r30|< r30|<= r30|>= r30|> r30|or r30|and r30|eq r30|neq r30|+ r30|- r30|* r30|/ r30|mod r30
-loc g61|bool g464|join g63|equality g64|rel g65|expr g66|term g67|unary g68|factor g69|id s70|( s71|- s72|! s73|num s74|real s75|true s76|false s77
-loc g375|term g465|unary g378|factor g379|id s380|( s381|- s382|! s383|num s384|real s385|true s386|false s387
-loc g375|term g466|unary g378|factor g379|id s380|( s381|- s382|! s383|num s384|real s385|true s386|false s387
-loc g375|unary g467|factor g379|id s380|( s381|- s382|! s383|num s384|real s385|true s386|false s387
-loc g375|unary g468|factor g379|id s380|( s381|- s382|! s383|num s384|real s385|true s386|false s387
-loc g375|unary g469|factor g379|id s380|( s381|- s382|! s383|num s384|real s385|true s386|false s387
-) r26|, r26|args g470|loc g203|bool g204|join g205|equality g206|rel g207|expr g208|term g209|unary g210|factor g211|arg g212|id s213|( s214|- s215|! s216|num s217|real s218|true s219|false s220
-) s471|or s151
-) r52|, r52|or r52|and r52|eq r52|neq r52|+ r52|- r52|* r52|/ r52|mod r52
-) r51|, r51|or r51|and r51|eq r51|neq r51|+ r51|- r51|* r51|/ r51|mod r51
-< r56|<= r56|>= r56|> r56|) r56|, r56|or r56|and r56|eq r56|neq r56|+ r56|- r56|* r56|/ r56|mod r56
-] s472|or s129
-] r30|or r30|and r30|eq r30|neq r30|+ r30|- r30|* r30|/ r30|mod r30|[ r30
-] r56|or r56|and r56|eq r56|neq r56|+ r56|- r56|* r56|/ r56|mod r56
-block g26|stmt g473|loc g28|id s29|{ s30|if s32|while s33|do s34|return s35
-; s474|or s109
-block g26|stmt g27|loc g28|id s29|{ s30|} s475|if s32|while s33|do s34|return s35
-) s476|or s151
-loc g82|bool g477|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-while s478
-} r22|else r22|[ r22|id r22|if r22|while r22|do r22|return r22|{ r22
-) r30|or r30|and r30|eq r30|neq r30|+ r30|- r30|* r30|/ r30|mod r30|[ r30
-) r56|or r56|and r56|eq r56|neq r56|+ r56|- r56|* r56|/ r56|mod r56
-; s479
-while r23|else r23
-while r18|else s480
-[ s37|= s481
-[ r11|id r11|if r11|while r11|do r11|return r11|{ r11|} r11|basic r11|decls g482
-( s483
-( r28|[ r28|id r28|if r28|while r28|do r28|return r28|{ r28|N g484
-( r28|[ r28|id r28|if r28|while r28|do r28|return r28|{ r28|N g485
-loc g43|bool g44|join g45|equality g46|rel g47|expr g48|term g49|unary g50|factor g51|arg g486|id s53|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-block g100|stmt g487|loc g102|id s29|{ s103|if s104|while s105|do s106|return s107
-) s488|or s151
-] s489|or s129
-) r44|, r44|or r44|and r44|eq r44|neq r44|+ r44|- r44|* s433|/ s434|mod s435
-) r45|, r45|or r45|and r45|eq r45|neq r45|+ r45|- r45|* s433|/ s434|mod s435
-) r47|, r47|or r47|and r47|eq r47|neq r47|+ r47|- r47|* r47|/ r47|mod r47
-) r48|, r48|or r48|and r48|eq r48|neq r48|+ r48|- r48|* r48|/ r48|mod r48
-) r49|, r49|or r49|and r49|eq r49|neq r49|+ r49|- r49|* r49|/ r49|mod r49
-) s490|, s300
-) r54|, r54|or r54|and r54|eq r54|neq r54|+ r54|- r54|* r54|/ r54|mod r54
-< r30|<= r30|>= r30|> r30|) r30|, r30|or r30|and r30|eq r30|neq r30|+ r30|- r30|* r30|/ r30|mod r30|[ r30
-} r19|[ r19|id r19|if r19|while r19|do r19|return r19|{ r19|else r19
-} r17|else r17|[ r17|id r17|if r17|while r17|do r17|return r17|{ r17
-} r9|else r9|[ r9|id r9|if r9|while r9|do r9|return r9|{ r9
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g491
-) s492|or s151
-( s493
-} r21|[ r21|id r21|if r21|while r21|do r21|return r21|{ r21|else r21
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g494
-loc g78|bool g495|join g45|equality g46|rel g47|expr g48|term g49|unary g50|factor g51|id s80|( s54|- s55|! s56|num s57|real s58|true s59|false s60
-} r16|[ r16|id r16|if r16|while r16|do r16|return r16|{ r16|else r16|decl g22|type g23|stmts g496|basic s11
-loc g82|bool g497|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-( s498
-block g100|stmt g499|loc g102|id s29|{ s103|if s104|while s105|do s106|return s107
-; s500
+id r27 | if r27 | while r27 | do r27 | return r27 | { r27 | else r27 | } r27 | M g303
+) s304 | or s149
+( s305
+] s306 | or s128
+) r32 | , r32 | or r32 | and s254
+) r24 | , r24
+) r34 | , r34 | or r34 | and r34 | eq s255 | neq s256
+) r36 | , r36 | or r36 | and r36 | eq r36 | neq r36 | < s257 | <= s258 | >= s259 | > s260
+) r37 | , r37 | or r37 | and r37 | eq r37 | neq r37 | < s257 | <= s258 | >= s259 | > s260
+) r39 | , r39 | or r39 | and r39 | eq r39 | neq r39 | < r39 | <= r39 | >= r39 | > r39 | + s261 | - s262
+) r40 | , r40 | or r40 | and r40 | eq r40 | neq r40 | < r40 | <= r40 | >= r40 | > r40 | + s261 | - s262
+) r41 | , r41 | or r41 | and r41 | eq r41 | neq r41 | < r41 | <= r41 | >= r41 | > r41 | + s261 | - s262
+) r42 | , r42 | or r42 | and r42 | eq r42 | neq r42 | < r42 | <= r42 | >= r42 | > r42 | + s261 | - s262
+) r44 | , r44 | or r44 | and r44 | eq r44 | neq r44 | < r44 | <= r44 | >= r44 | > r44 | + r44 | - r44 | * s263 | / s264 | mod s265
+) r45 | , r45 | or r45 | and r45 | eq r45 | neq r45 | < r45 | <= r45 | >= r45 | > r45 | + r45 | - r45 | * s263 | / s264 | mod s265
+) r47 | , r47 | or r47 | and r47 | eq r47 | neq r47 | < r47 | <= r47 | >= r47 | > r47 | + r47 | - r47 | * r47 | / r47 | mod r47
+) r48 | , r48 | or r48 | and r48 | eq r48 | neq r48 | < r48 | <= r48 | >= r48 | > r48 | + r48 | - r48 | * r48 | / r48 | mod r48
+) r49 | , r49 | or r49 | and r49 | eq r49 | neq r49 | < r49 | <= r49 | >= r49 | > r49 | + r49 | - r49 | * r49 | / r49 | mod r49
+) s307 | , s253
+) r54 | , r54 | or r54 | and r54 | eq r54 | neq r54 | < r54 | <= r54 | >= r54 | > r54 | + r54 | - r54 | * r54 | / r54 | mod r54
+id r27 | if r27 | while r27 | do r27 | return r27 | { r27 | else r27 | } r27 | M g308
+} r20 | id r20 | if r20 | while r20 | do r20 | return r20 | { r20 | else r20
+; r27 | M g309
+block g310 | stmt g311 | loc g312 | id s29 | { s313 | if s314 | while s315 | do s316 | return s317
+id r27 | if r27 | while r27 | do r27 | return r27 | { r27 | else r27 | } r27 | M g318
+loc g81 | bool g319 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+) r30 | , r30 | [ r30 | or r30 | and r30 | eq r30 | neq r30 | < r30 | <= r30 | >= r30 | > r30 | + r30 | - r30 | * r30 | / r30 | mod r30
+) r56 | , r56 | or r56 | and r56 | eq r56 | neq r56 | < r56 | <= r56 | >= r56 | > r56 | + r56 | - r56 | * r56 | / r56 | mod r56
+block g26 | stmt g320 | loc g28 | id s29 | { s30 | if s32 | while s33 | do s34 | return s35
+; s321
+while r23 | else r23
+while r18 | else s322
+[ s37 | = s323
+} r11 | id r11 | if r11 | while r11 | do r11 | return r11 | { r11 | basic r11 | decls g324
+( s325
+( r28 | N g326
+id r28 | if r28 | while r28 | do r28 | return r28 | { r28 | else r28 | } r28 | N g327
+loc g43 | bool g44 | arg g328 | join g46 | equality g47 | rel g48 | expr g49 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+block g99 | stmt g329 | loc g101 | id s29 | { s102 | if s103 | while s104 | do s105 | return s106
+) s330 | or s149
+} r19 | id r19 | if r19 | while r19 | do r19 | return r19 | { r19 | else r19
+} r21 | id r21 | if r21 | while r21 | do r21 | return r21 | { r21 | else r21
+id r27 | if r27 | while r27 | do r27 | return r27 | { r27 | else r27 | } r27 | M g331
+loc g78 | bool g332 | join g46 | equality g47 | rel g48 | expr g49 | term g50 | unary g51 | factor g52 | id s53 | ( s54 | num s55 | - s56 | ! s57 | real s58 | true s59 | false s60
+} r16 | id r16 | if r16 | while r16 | do r16 | return r16 | { r16 | else r16 | type g22 | stmts g333 | decl g24 | basic s11
+loc g81 | bool g334 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+( s335
+block g99 | stmt g336 | loc g101 | id s29 | { s102 | if s103 | while s104 | do s105 | return s106
+; s337
 while r20
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g501
-) r30|, r30|or r30|and r30|eq r30|neq r30|+ r30|- r30|* r30|/ r30|mod r30|[ r30
-) r56|, r56|or r56|and r56|eq r56|neq r56|+ r56|- r56|* r56|/ r56|mod r56
-block g335|stmt g502|loc g337|id s29|{ s338|if s339|while s340|do s341|return s342
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g503
-loc g82|bool g504|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-block g100|stmt g505|loc g102|id s29|{ s103|if s104|while s105|do s106|return s107
-; s506|or s109
-block g26|stmt g27|loc g28|id s29|{ s30|} s507|if s32|while s33|do s34|return s35
-) s508|or s151
-loc g82|bool g509|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-while s510
-while r22|else r22
-; s511
-} r18|else s512|[ r18|id r18|if r18|while r18|do r18|return r18|{ r18
-block g335|stmt g513|loc g337|id s29|{ s338|if s339|while s340|do s341|return s342
-) s514|or s151
+; r27 | M g338
+block g99 | stmt g339 | loc g101 | id s29 | { s102 | if s103 | while s104 | do s105 | return s106
+; s340 | or s108
+block g26 | stmt g27 | loc g28 | id s29 | { s30 | } s341 | if s32 | while s33 | do s34 | return s35
+) s342 | or s149
+loc g81 | bool g343 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+while s344
+while r22 | else r22
+; s345
 while r19
-while r17|else r17
-while r9|else r9
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g515
-) s516|or s151
-( s517
+while r17 | else r17
+while r9 | else r9
+id r27 | if r27 | while r27 | do r27 | return r27 | { r27 | else r27 | } r27 | M g346
+) s347 | or s149
+( s348
 while r21
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g518
-} r20|else r20|[ r20|id r20|if r20|while r20|do r20|return r20|{ r20
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g519
-block g454|stmt g520|loc g456|id s29|{ s457|if s458|while s459|do s460|return s461
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g521
-loc g82|bool g522|join g84|equality g85|rel g86|expr g87|term g88|unary g89|factor g90|id s91|( s92|- s93|! s94|num s95|real s96|true s97|false s98
-block g335|stmt g523|loc g337|id s29|{ s338|if s339|while s340|do s341|return s342
-; s524
-while r18|else s525
-block g454|stmt g526|loc g456|id s29|{ s457|if s458|while s459|do s460|return s461
-) s527|or s151
-} r19|else r19|[ r19|id r19|if r19|while r19|do r19|return r19|{ r19
-} r21|else r21|[ r21|id r21|if r21|while r21|do r21|return r21|{ r21
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g528
-while r20|else r20
-[ r27|id r27|if r27|while r27|do r27|return r27|{ r27|; r27|M g529
-block g454|stmt g530|loc g456|id s29|{ s457|if s458|while s459|do s460|return s461
-; s531
-while r19|else r19
-while r21|else r21
+block g310 | stmt g349 | loc g312 | id s29 | { s313 | if s314 | while s315 | do s316 | return s317
+id r27 | if r27 | while r27 | do r27 | return r27 | { r27 | else r27 | } r27 | M g350
+loc g81 | bool g351 | join g83 | equality g84 | rel g85 | expr g86 | term g87 | unary g88 | factor g89 | id s90 | ( s91 | num s92 | - s93 | ! s94 | real s95 | true s96 | false s97
+while r18 | else s352
+block g310 | stmt g353 | loc g312 | id s29 | { s313 | if s314 | while s315 | do s316 | return s317
+) s354 | or s149
+id r27 | if r27 | while r27 | do r27 | return r27 | { r27 | else r27 | } r27 | M g355
+while r20 | else r20
+; r27 | M g356
+block g310 | stmt g357 | loc g312 | id s29 | { s313 | if s314 | while s315 | do s316 | return s317
+; s358
+while r19 | else r19
+while r21 | else r21
