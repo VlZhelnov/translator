@@ -1,5 +1,5 @@
-post->split;
-split->split ":" concat|concat;
-concat->concat mult|mult;
-mult->mult "*"|mult "+"|symbol;
-symbol->"(" split ")"|"s";
+post : split ;
+split : split ":" concat | concat ;
+concat : concat mult | mult ;
+mult : mult "*" | mult "+" | symbol ;
+symbol : "(" split ")" | "s" ;
