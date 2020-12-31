@@ -1,697 +1,578 @@
 
 [grammar] 
-	[products] 
-		post : split
-		split : split : concat, concat
-		concat : concat mult, mult
-		mult : mult *, mult +, symbol
-		symbol : ( split ), s
+	[nterm] 
+		[post] 
+			nullable	False
+			first : (, s
+			follow : 
+		[split] 
+			nullable	False
+			first : (, s
+			follow : :, )
+		[concat] 
+			nullable	False
+			first : (, s
+			follow : (, s, :, )
+		[mult] 
+			nullable	False
+			first : (, s
+			follow : *, +, (, s, :, )
+		[symbol] 
+			nullable	False
+			first : (, s
+			follow : *, +, (, s, :, )
+	[term] 
+		$	0
+		:	1
+		*	2
+		+	3
+		(	4
+		)	5
+		s	6
 	[rules] 
-		post->split .	0
-		split->split : concat .	1
-		split->concat .	2
-		concat->concat mult .	3
-		concat->mult .	4
-		mult->mult * .	5
-		mult->mult + .	6
-		mult->symbol .	7
-		symbol->( split ) .	8
-		symbol->s .	9
-	terms : :, *, +, (, ), s
-[nullable] 
-	split	False
-	concat	False
-	mult	False
-	post	False
-	symbol	False
-[first] 
-	[post] 
-		:	
-		*	
-		+	
-		(	
-		s	
-	[split] 
-		:	
-		*	
-		+	
-		(	
-		s	
-	[:] 
-		:	
-	[)] 
-		)	
-	[concat] 
-		*	
-		+	
-		(	
-		s	
-	[mult] 
-		*	
-		+	
-		(	
-		s	
-	[*] 
-		*	
-	[+] 
-		+	
-	[symbol] 
-		(	
-		s	
-[follow] 
-	[post] 
-	[split] 
-		:	
-		)	
-	[concat] 
-		:	
-		)	
-		*	
-		+	
-		(	
-		s	
-	[mult] 
-		:	
-		)	
-		*	
-		+	
-		(	
-		s	
-	[symbol] 
-		:	
-		)	
-		*	
-		+	
-		(	
-		s	
-[items] 
+		0 : post, split
+		1 : split, split, :, concat
+		2 : split, concat
+		3 : concat, concat, mult
+		4 : concat, mult
+		5 : mult, mult, *
+		6 : mult, mult, +
+		7 : mult, symbol
+		8 : symbol, (, split, )
+		9 : symbol, s
+[set_items] 
 	[0] 
-		0 : post, .split, $
-		1 : split, .split : concat, $
-		2 : split, .concat, $
-		3 : split, .split : concat, :
-		4 : split, .concat, :
-		5 : concat, .concat mult, $
-		6 : concat, .mult, $
-		7 : concat, .concat mult, :
-		8 : concat, .mult, :
-		9 : concat, .concat mult, *
-		10 : concat, .concat mult, +
-		11 : concat, .concat mult, (
-		12 : concat, .concat mult, s
-		13 : concat, .concat mult, )
-		14 : concat, .mult, *
-		15 : concat, .mult, +
-		16 : concat, .mult, (
-		17 : concat, .mult, s
-		18 : concat, .mult, )
-		19 : mult, .mult *, $
-		20 : mult, .mult +, $
-		21 : mult, .symbol, $
-		22 : mult, .mult *, :
-		23 : mult, .mult +, :
-		24 : mult, .symbol, :
-		25 : mult, .mult *, *
-		26 : mult, .mult +, *
-		27 : mult, .symbol, *
-		28 : mult, .mult *, +
-		29 : mult, .mult +, +
-		30 : mult, .symbol, +
-		31 : mult, .mult *, (
-		32 : mult, .mult +, (
-		33 : mult, .symbol, (
-		34 : mult, .mult *, s
-		35 : mult, .mult +, s
-		36 : mult, .symbol, s
-		37 : mult, .mult *, )
-		38 : mult, .mult +, )
-		39 : mult, .symbol, )
-		40 : symbol, .( split ), $
-		41 : symbol, .s, $
-		42 : symbol, .( split ), :
-		43 : symbol, .s, :
-		44 : symbol, .( split ), *
-		45 : symbol, .s, *
-		46 : symbol, .( split ), +
-		47 : symbol, .s, +
-		48 : symbol, .( split ), (
-		49 : symbol, .s, (
-		50 : symbol, .( split ), s
-		51 : symbol, .s, s
-		52 : symbol, .( split ), )
-		53 : symbol, .s, )
+		10 : 0, 1, 0
+		110 : 1, 1, 0
+		210 : 2, 1, 0
+		111 : 1, 1, 1
+		211 : 2, 1, 1
+		310 : 3, 1, 0
+		410 : 4, 1, 0
+		311 : 3, 1, 1
+		411 : 4, 1, 1
+		314 : 3, 1, 4
+		316 : 3, 1, 6
+		414 : 4, 1, 4
+		416 : 4, 1, 6
+		510 : 5, 1, 0
+		610 : 6, 1, 0
+		710 : 7, 1, 0
+		511 : 5, 1, 1
+		611 : 6, 1, 1
+		711 : 7, 1, 1
+		514 : 5, 1, 4
+		614 : 6, 1, 4
+		714 : 7, 1, 4
+		516 : 5, 1, 6
+		616 : 6, 1, 6
+		716 : 7, 1, 6
+		512 : 5, 1, 2
+		612 : 6, 1, 2
+		712 : 7, 1, 2
+		513 : 5, 1, 3
+		613 : 6, 1, 3
+		713 : 7, 1, 3
+		810 : 8, 1, 0
+		910 : 9, 1, 0
+		811 : 8, 1, 1
+		911 : 9, 1, 1
+		814 : 8, 1, 4
+		914 : 9, 1, 4
+		816 : 8, 1, 6
+		916 : 9, 1, 6
+		812 : 8, 1, 2
+		912 : 9, 1, 2
+		813 : 8, 1, 3
+		913 : 9, 1, 3
 	[1] 
-		0 : post, split ., $
-		1 : split, split .: concat, $
-		2 : split, split .: concat, :
+		20 : 0, 2, 0
+		120 : 1, 2, 0
+		121 : 1, 2, 1
 	[2] 
-		0 : split, concat ., $
-		1 : split, concat ., :
-		2 : concat, concat .mult, $
-		3 : concat, concat .mult, :
-		4 : concat, concat .mult, *
-		5 : concat, concat .mult, +
-		6 : concat, concat .mult, (
-		7 : concat, concat .mult, s
-		8 : concat, concat .mult, )
-		9 : mult, .mult *, $
-		10 : mult, .mult +, $
-		11 : mult, .symbol, $
-		12 : mult, .mult *, :
-		13 : mult, .mult +, :
-		14 : mult, .symbol, :
-		15 : mult, .mult *, *
-		16 : mult, .mult +, *
-		17 : mult, .symbol, *
-		18 : mult, .mult *, +
-		19 : mult, .mult +, +
-		20 : mult, .symbol, +
-		21 : mult, .mult *, (
-		22 : mult, .mult +, (
-		23 : mult, .symbol, (
-		24 : mult, .mult *, s
-		25 : mult, .mult +, s
-		26 : mult, .symbol, s
-		27 : mult, .mult *, )
-		28 : mult, .mult +, )
-		29 : mult, .symbol, )
-		30 : symbol, .( split ), $
-		31 : symbol, .s, $
-		32 : symbol, .( split ), :
-		33 : symbol, .s, :
-		34 : symbol, .( split ), *
-		35 : symbol, .s, *
-		36 : symbol, .( split ), +
-		37 : symbol, .s, +
-		38 : symbol, .( split ), (
-		39 : symbol, .s, (
-		40 : symbol, .( split ), s
-		41 : symbol, .s, s
-		42 : symbol, .( split ), )
-		43 : symbol, .s, )
+		220 : 2, 2, 0
+		221 : 2, 2, 1
+		320 : 3, 2, 0
+		321 : 3, 2, 1
+		324 : 3, 2, 4
+		326 : 3, 2, 6
+		510 : 5, 1, 0
+		610 : 6, 1, 0
+		710 : 7, 1, 0
+		511 : 5, 1, 1
+		611 : 6, 1, 1
+		711 : 7, 1, 1
+		514 : 5, 1, 4
+		614 : 6, 1, 4
+		714 : 7, 1, 4
+		516 : 5, 1, 6
+		616 : 6, 1, 6
+		716 : 7, 1, 6
+		512 : 5, 1, 2
+		612 : 6, 1, 2
+		712 : 7, 1, 2
+		513 : 5, 1, 3
+		613 : 6, 1, 3
+		713 : 7, 1, 3
+		810 : 8, 1, 0
+		910 : 9, 1, 0
+		811 : 8, 1, 1
+		911 : 9, 1, 1
+		814 : 8, 1, 4
+		914 : 9, 1, 4
+		816 : 8, 1, 6
+		916 : 9, 1, 6
+		812 : 8, 1, 2
+		912 : 9, 1, 2
+		813 : 8, 1, 3
+		913 : 9, 1, 3
 	[3] 
-		0 : concat, mult ., $
-		1 : concat, mult ., :
-		2 : concat, mult ., *
-		3 : concat, mult ., +
-		4 : concat, mult ., (
-		5 : concat, mult ., s
-		6 : concat, mult ., )
-		7 : mult, mult .*, $
-		8 : mult, mult .+, $
-		9 : mult, mult .*, :
-		10 : mult, mult .+, :
-		11 : mult, mult .*, *
-		12 : mult, mult .+, *
-		13 : mult, mult .*, +
-		14 : mult, mult .+, +
-		15 : mult, mult .*, (
-		16 : mult, mult .+, (
-		17 : mult, mult .*, s
-		18 : mult, mult .+, s
-		19 : mult, mult .*, )
-		20 : mult, mult .+, )
+		420 : 4, 2, 0
+		421 : 4, 2, 1
+		424 : 4, 2, 4
+		426 : 4, 2, 6
+		520 : 5, 2, 0
+		620 : 6, 2, 0
+		521 : 5, 2, 1
+		621 : 6, 2, 1
+		524 : 5, 2, 4
+		624 : 6, 2, 4
+		526 : 5, 2, 6
+		626 : 6, 2, 6
+		522 : 5, 2, 2
+		622 : 6, 2, 2
+		523 : 5, 2, 3
+		623 : 6, 2, 3
 	[4] 
-		0 : mult, symbol ., $
-		1 : mult, symbol ., :
-		2 : mult, symbol ., *
-		3 : mult, symbol ., +
-		4 : mult, symbol ., (
-		5 : mult, symbol ., s
-		6 : mult, symbol ., )
+		720 : 7, 2, 0
+		721 : 7, 2, 1
+		724 : 7, 2, 4
+		726 : 7, 2, 6
+		722 : 7, 2, 2
+		723 : 7, 2, 3
 	[5] 
-		0 : symbol, ( .split ), $
-		1 : symbol, ( .split ), :
-		2 : symbol, ( .split ), *
-		3 : symbol, ( .split ), +
-		4 : symbol, ( .split ), (
-		5 : symbol, ( .split ), s
-		6 : symbol, ( .split ), )
-		7 : split, .split : concat, )
-		8 : split, .concat, )
-		9 : split, .split : concat, :
-		10 : split, .concat, :
-		11 : concat, .concat mult, )
-		12 : concat, .mult, )
-		13 : concat, .concat mult, :
-		14 : concat, .mult, :
-		15 : concat, .concat mult, *
-		16 : concat, .concat mult, +
-		17 : concat, .concat mult, (
-		18 : concat, .concat mult, s
-		19 : concat, .mult, *
-		20 : concat, .mult, +
-		21 : concat, .mult, (
-		22 : concat, .mult, s
-		23 : mult, .mult *, )
-		24 : mult, .mult +, )
-		25 : mult, .symbol, )
-		26 : mult, .mult *, :
-		27 : mult, .mult +, :
-		28 : mult, .symbol, :
-		29 : mult, .mult *, *
-		30 : mult, .mult +, *
-		31 : mult, .symbol, *
-		32 : mult, .mult *, +
-		33 : mult, .mult +, +
-		34 : mult, .symbol, +
-		35 : mult, .mult *, (
-		36 : mult, .mult +, (
-		37 : mult, .symbol, (
-		38 : mult, .mult *, s
-		39 : mult, .mult +, s
-		40 : mult, .symbol, s
-		41 : symbol, .( split ), )
-		42 : symbol, .s, )
-		43 : symbol, .( split ), :
-		44 : symbol, .s, :
-		45 : symbol, .( split ), *
-		46 : symbol, .s, *
-		47 : symbol, .( split ), +
-		48 : symbol, .s, +
-		49 : symbol, .( split ), (
-		50 : symbol, .s, (
-		51 : symbol, .( split ), s
-		52 : symbol, .s, s
+		820 : 8, 2, 0
+		821 : 8, 2, 1
+		824 : 8, 2, 4
+		826 : 8, 2, 6
+		822 : 8, 2, 2
+		823 : 8, 2, 3
+		115 : 1, 1, 5
+		215 : 2, 1, 5
+		111 : 1, 1, 1
+		211 : 2, 1, 1
+		315 : 3, 1, 5
+		415 : 4, 1, 5
+		311 : 3, 1, 1
+		411 : 4, 1, 1
+		314 : 3, 1, 4
+		316 : 3, 1, 6
+		414 : 4, 1, 4
+		416 : 4, 1, 6
+		515 : 5, 1, 5
+		615 : 6, 1, 5
+		715 : 7, 1, 5
+		511 : 5, 1, 1
+		611 : 6, 1, 1
+		711 : 7, 1, 1
+		514 : 5, 1, 4
+		614 : 6, 1, 4
+		714 : 7, 1, 4
+		516 : 5, 1, 6
+		616 : 6, 1, 6
+		716 : 7, 1, 6
+		512 : 5, 1, 2
+		612 : 6, 1, 2
+		712 : 7, 1, 2
+		513 : 5, 1, 3
+		613 : 6, 1, 3
+		713 : 7, 1, 3
+		815 : 8, 1, 5
+		915 : 9, 1, 5
+		811 : 8, 1, 1
+		911 : 9, 1, 1
+		814 : 8, 1, 4
+		914 : 9, 1, 4
+		816 : 8, 1, 6
+		916 : 9, 1, 6
+		812 : 8, 1, 2
+		912 : 9, 1, 2
+		813 : 8, 1, 3
+		913 : 9, 1, 3
 	[6] 
-		0 : symbol, s ., $
-		1 : symbol, s ., :
-		2 : symbol, s ., *
-		3 : symbol, s ., +
-		4 : symbol, s ., (
-		5 : symbol, s ., s
-		6 : symbol, s ., )
+		920 : 9, 2, 0
+		921 : 9, 2, 1
+		924 : 9, 2, 4
+		926 : 9, 2, 6
+		922 : 9, 2, 2
+		923 : 9, 2, 3
 	[7] 
-		0 : split, split : .concat, $
-		1 : split, split : .concat, :
-		2 : concat, .concat mult, $
-		3 : concat, .mult, $
-		4 : concat, .concat mult, :
-		5 : concat, .mult, :
-		6 : concat, .concat mult, *
-		7 : concat, .concat mult, +
-		8 : concat, .concat mult, (
-		9 : concat, .concat mult, s
-		10 : concat, .concat mult, )
-		11 : concat, .mult, *
-		12 : concat, .mult, +
-		13 : concat, .mult, (
-		14 : concat, .mult, s
-		15 : concat, .mult, )
-		16 : mult, .mult *, $
-		17 : mult, .mult +, $
-		18 : mult, .symbol, $
-		19 : mult, .mult *, :
-		20 : mult, .mult +, :
-		21 : mult, .symbol, :
-		22 : mult, .mult *, *
-		23 : mult, .mult +, *
-		24 : mult, .symbol, *
-		25 : mult, .mult *, +
-		26 : mult, .mult +, +
-		27 : mult, .symbol, +
-		28 : mult, .mult *, (
-		29 : mult, .mult +, (
-		30 : mult, .symbol, (
-		31 : mult, .mult *, s
-		32 : mult, .mult +, s
-		33 : mult, .symbol, s
-		34 : mult, .mult *, )
-		35 : mult, .mult +, )
-		36 : mult, .symbol, )
-		37 : symbol, .( split ), $
-		38 : symbol, .s, $
-		39 : symbol, .( split ), :
-		40 : symbol, .s, :
-		41 : symbol, .( split ), *
-		42 : symbol, .s, *
-		43 : symbol, .( split ), +
-		44 : symbol, .s, +
-		45 : symbol, .( split ), (
-		46 : symbol, .s, (
-		47 : symbol, .( split ), s
-		48 : symbol, .s, s
-		49 : symbol, .( split ), )
-		50 : symbol, .s, )
+		130 : 1, 3, 0
+		131 : 1, 3, 1
+		310 : 3, 1, 0
+		410 : 4, 1, 0
+		311 : 3, 1, 1
+		411 : 4, 1, 1
+		314 : 3, 1, 4
+		316 : 3, 1, 6
+		414 : 4, 1, 4
+		416 : 4, 1, 6
+		510 : 5, 1, 0
+		610 : 6, 1, 0
+		710 : 7, 1, 0
+		511 : 5, 1, 1
+		611 : 6, 1, 1
+		711 : 7, 1, 1
+		514 : 5, 1, 4
+		614 : 6, 1, 4
+		714 : 7, 1, 4
+		516 : 5, 1, 6
+		616 : 6, 1, 6
+		716 : 7, 1, 6
+		512 : 5, 1, 2
+		612 : 6, 1, 2
+		712 : 7, 1, 2
+		513 : 5, 1, 3
+		613 : 6, 1, 3
+		713 : 7, 1, 3
+		810 : 8, 1, 0
+		910 : 9, 1, 0
+		811 : 8, 1, 1
+		911 : 9, 1, 1
+		814 : 8, 1, 4
+		914 : 9, 1, 4
+		816 : 8, 1, 6
+		916 : 9, 1, 6
+		812 : 8, 1, 2
+		912 : 9, 1, 2
+		813 : 8, 1, 3
+		913 : 9, 1, 3
 	[8] 
-		0 : concat, concat mult ., $
-		1 : concat, concat mult ., :
-		2 : concat, concat mult ., *
-		3 : concat, concat mult ., +
-		4 : concat, concat mult ., (
-		5 : concat, concat mult ., s
-		6 : concat, concat mult ., )
-		7 : mult, mult .*, $
-		8 : mult, mult .+, $
-		9 : mult, mult .*, :
-		10 : mult, mult .+, :
-		11 : mult, mult .*, *
-		12 : mult, mult .+, *
-		13 : mult, mult .*, +
-		14 : mult, mult .+, +
-		15 : mult, mult .*, (
-		16 : mult, mult .+, (
-		17 : mult, mult .*, s
-		18 : mult, mult .+, s
-		19 : mult, mult .*, )
-		20 : mult, mult .+, )
+		330 : 3, 3, 0
+		331 : 3, 3, 1
+		334 : 3, 3, 4
+		336 : 3, 3, 6
+		520 : 5, 2, 0
+		620 : 6, 2, 0
+		521 : 5, 2, 1
+		621 : 6, 2, 1
+		524 : 5, 2, 4
+		624 : 6, 2, 4
+		526 : 5, 2, 6
+		626 : 6, 2, 6
+		522 : 5, 2, 2
+		622 : 6, 2, 2
+		523 : 5, 2, 3
+		623 : 6, 2, 3
 	[9] 
-		0 : mult, mult * ., $
-		1 : mult, mult * ., :
-		2 : mult, mult * ., *
-		3 : mult, mult * ., +
-		4 : mult, mult * ., (
-		5 : mult, mult * ., s
-		6 : mult, mult * ., )
+		530 : 5, 3, 0
+		531 : 5, 3, 1
+		534 : 5, 3, 4
+		536 : 5, 3, 6
+		532 : 5, 3, 2
+		533 : 5, 3, 3
 	[10] 
-		0 : mult, mult + ., $
-		1 : mult, mult + ., :
-		2 : mult, mult + ., *
-		3 : mult, mult + ., +
-		4 : mult, mult + ., (
-		5 : mult, mult + ., s
-		6 : mult, mult + ., )
+		630 : 6, 3, 0
+		631 : 6, 3, 1
+		634 : 6, 3, 4
+		636 : 6, 3, 6
+		632 : 6, 3, 2
+		633 : 6, 3, 3
 	[11] 
-		0 : symbol, ( split .), $
-		1 : symbol, ( split .), :
-		2 : symbol, ( split .), *
-		3 : symbol, ( split .), +
-		4 : symbol, ( split .), (
-		5 : symbol, ( split .), s
-		6 : symbol, ( split .), )
-		7 : split, split .: concat, )
-		8 : split, split .: concat, :
+		830 : 8, 3, 0
+		831 : 8, 3, 1
+		834 : 8, 3, 4
+		836 : 8, 3, 6
+		832 : 8, 3, 2
+		833 : 8, 3, 3
+		125 : 1, 2, 5
+		121 : 1, 2, 1
 	[12] 
-		0 : split, concat ., )
-		1 : split, concat ., :
-		2 : concat, concat .mult, )
-		3 : concat, concat .mult, :
-		4 : concat, concat .mult, *
-		5 : concat, concat .mult, +
-		6 : concat, concat .mult, (
-		7 : concat, concat .mult, s
-		8 : mult, .mult *, )
-		9 : mult, .mult +, )
-		10 : mult, .symbol, )
-		11 : mult, .mult *, :
-		12 : mult, .mult +, :
-		13 : mult, .symbol, :
-		14 : mult, .mult *, *
-		15 : mult, .mult +, *
-		16 : mult, .symbol, *
-		17 : mult, .mult *, +
-		18 : mult, .mult +, +
-		19 : mult, .symbol, +
-		20 : mult, .mult *, (
-		21 : mult, .mult +, (
-		22 : mult, .symbol, (
-		23 : mult, .mult *, s
-		24 : mult, .mult +, s
-		25 : mult, .symbol, s
-		26 : symbol, .( split ), )
-		27 : symbol, .s, )
-		28 : symbol, .( split ), :
-		29 : symbol, .s, :
-		30 : symbol, .( split ), *
-		31 : symbol, .s, *
-		32 : symbol, .( split ), +
-		33 : symbol, .s, +
-		34 : symbol, .( split ), (
-		35 : symbol, .s, (
-		36 : symbol, .( split ), s
-		37 : symbol, .s, s
+		225 : 2, 2, 5
+		221 : 2, 2, 1
+		325 : 3, 2, 5
+		321 : 3, 2, 1
+		324 : 3, 2, 4
+		326 : 3, 2, 6
+		515 : 5, 1, 5
+		615 : 6, 1, 5
+		715 : 7, 1, 5
+		511 : 5, 1, 1
+		611 : 6, 1, 1
+		711 : 7, 1, 1
+		514 : 5, 1, 4
+		614 : 6, 1, 4
+		714 : 7, 1, 4
+		516 : 5, 1, 6
+		616 : 6, 1, 6
+		716 : 7, 1, 6
+		512 : 5, 1, 2
+		612 : 6, 1, 2
+		712 : 7, 1, 2
+		513 : 5, 1, 3
+		613 : 6, 1, 3
+		713 : 7, 1, 3
+		815 : 8, 1, 5
+		915 : 9, 1, 5
+		811 : 8, 1, 1
+		911 : 9, 1, 1
+		814 : 8, 1, 4
+		914 : 9, 1, 4
+		816 : 8, 1, 6
+		916 : 9, 1, 6
+		812 : 8, 1, 2
+		912 : 9, 1, 2
+		813 : 8, 1, 3
+		913 : 9, 1, 3
 	[13] 
-		0 : concat, mult ., )
-		1 : concat, mult ., :
-		2 : concat, mult ., *
-		3 : concat, mult ., +
-		4 : concat, mult ., (
-		5 : concat, mult ., s
-		6 : mult, mult .*, )
-		7 : mult, mult .+, )
-		8 : mult, mult .*, :
-		9 : mult, mult .+, :
-		10 : mult, mult .*, *
-		11 : mult, mult .+, *
-		12 : mult, mult .*, +
-		13 : mult, mult .+, +
-		14 : mult, mult .*, (
-		15 : mult, mult .+, (
-		16 : mult, mult .*, s
-		17 : mult, mult .+, s
+		425 : 4, 2, 5
+		421 : 4, 2, 1
+		424 : 4, 2, 4
+		426 : 4, 2, 6
+		525 : 5, 2, 5
+		625 : 6, 2, 5
+		521 : 5, 2, 1
+		621 : 6, 2, 1
+		524 : 5, 2, 4
+		624 : 6, 2, 4
+		526 : 5, 2, 6
+		626 : 6, 2, 6
+		522 : 5, 2, 2
+		622 : 6, 2, 2
+		523 : 5, 2, 3
+		623 : 6, 2, 3
 	[14] 
-		0 : mult, symbol ., )
-		1 : mult, symbol ., :
-		2 : mult, symbol ., *
-		3 : mult, symbol ., +
-		4 : mult, symbol ., (
-		5 : mult, symbol ., s
+		725 : 7, 2, 5
+		721 : 7, 2, 1
+		724 : 7, 2, 4
+		726 : 7, 2, 6
+		722 : 7, 2, 2
+		723 : 7, 2, 3
 	[15] 
-		0 : symbol, ( .split ), )
-		1 : symbol, ( .split ), :
-		2 : symbol, ( .split ), *
-		3 : symbol, ( .split ), +
-		4 : symbol, ( .split ), (
-		5 : symbol, ( .split ), s
-		6 : split, .split : concat, )
-		7 : split, .concat, )
-		8 : split, .split : concat, :
-		9 : split, .concat, :
-		10 : concat, .concat mult, )
-		11 : concat, .mult, )
-		12 : concat, .concat mult, :
-		13 : concat, .mult, :
-		14 : concat, .concat mult, *
-		15 : concat, .concat mult, +
-		16 : concat, .concat mult, (
-		17 : concat, .concat mult, s
-		18 : concat, .mult, *
-		19 : concat, .mult, +
-		20 : concat, .mult, (
-		21 : concat, .mult, s
-		22 : mult, .mult *, )
-		23 : mult, .mult +, )
-		24 : mult, .symbol, )
-		25 : mult, .mult *, :
-		26 : mult, .mult +, :
-		27 : mult, .symbol, :
-		28 : mult, .mult *, *
-		29 : mult, .mult +, *
-		30 : mult, .symbol, *
-		31 : mult, .mult *, +
-		32 : mult, .mult +, +
-		33 : mult, .symbol, +
-		34 : mult, .mult *, (
-		35 : mult, .mult +, (
-		36 : mult, .symbol, (
-		37 : mult, .mult *, s
-		38 : mult, .mult +, s
-		39 : mult, .symbol, s
-		40 : symbol, .( split ), )
-		41 : symbol, .s, )
-		42 : symbol, .( split ), :
-		43 : symbol, .s, :
-		44 : symbol, .( split ), *
-		45 : symbol, .s, *
-		46 : symbol, .( split ), +
-		47 : symbol, .s, +
-		48 : symbol, .( split ), (
-		49 : symbol, .s, (
-		50 : symbol, .( split ), s
-		51 : symbol, .s, s
+		825 : 8, 2, 5
+		821 : 8, 2, 1
+		824 : 8, 2, 4
+		826 : 8, 2, 6
+		822 : 8, 2, 2
+		823 : 8, 2, 3
+		115 : 1, 1, 5
+		215 : 2, 1, 5
+		111 : 1, 1, 1
+		211 : 2, 1, 1
+		315 : 3, 1, 5
+		415 : 4, 1, 5
+		311 : 3, 1, 1
+		411 : 4, 1, 1
+		314 : 3, 1, 4
+		316 : 3, 1, 6
+		414 : 4, 1, 4
+		416 : 4, 1, 6
+		515 : 5, 1, 5
+		615 : 6, 1, 5
+		715 : 7, 1, 5
+		511 : 5, 1, 1
+		611 : 6, 1, 1
+		711 : 7, 1, 1
+		514 : 5, 1, 4
+		614 : 6, 1, 4
+		714 : 7, 1, 4
+		516 : 5, 1, 6
+		616 : 6, 1, 6
+		716 : 7, 1, 6
+		512 : 5, 1, 2
+		612 : 6, 1, 2
+		712 : 7, 1, 2
+		513 : 5, 1, 3
+		613 : 6, 1, 3
+		713 : 7, 1, 3
+		815 : 8, 1, 5
+		915 : 9, 1, 5
+		811 : 8, 1, 1
+		911 : 9, 1, 1
+		814 : 8, 1, 4
+		914 : 9, 1, 4
+		816 : 8, 1, 6
+		916 : 9, 1, 6
+		812 : 8, 1, 2
+		912 : 9, 1, 2
+		813 : 8, 1, 3
+		913 : 9, 1, 3
 	[16] 
-		0 : symbol, s ., )
-		1 : symbol, s ., :
-		2 : symbol, s ., *
-		3 : symbol, s ., +
-		4 : symbol, s ., (
-		5 : symbol, s ., s
+		925 : 9, 2, 5
+		921 : 9, 2, 1
+		924 : 9, 2, 4
+		926 : 9, 2, 6
+		922 : 9, 2, 2
+		923 : 9, 2, 3
 	[17] 
-		0 : split, split : concat ., $
-		1 : split, split : concat ., :
-		2 : concat, concat .mult, $
-		3 : concat, concat .mult, :
-		4 : concat, concat .mult, *
-		5 : concat, concat .mult, +
-		6 : concat, concat .mult, (
-		7 : concat, concat .mult, s
-		8 : concat, concat .mult, )
-		9 : mult, .mult *, $
-		10 : mult, .mult +, $
-		11 : mult, .symbol, $
-		12 : mult, .mult *, :
-		13 : mult, .mult +, :
-		14 : mult, .symbol, :
-		15 : mult, .mult *, *
-		16 : mult, .mult +, *
-		17 : mult, .symbol, *
-		18 : mult, .mult *, +
-		19 : mult, .mult +, +
-		20 : mult, .symbol, +
-		21 : mult, .mult *, (
-		22 : mult, .mult +, (
-		23 : mult, .symbol, (
-		24 : mult, .mult *, s
-		25 : mult, .mult +, s
-		26 : mult, .symbol, s
-		27 : mult, .mult *, )
-		28 : mult, .mult +, )
-		29 : mult, .symbol, )
-		30 : symbol, .( split ), $
-		31 : symbol, .s, $
-		32 : symbol, .( split ), :
-		33 : symbol, .s, :
-		34 : symbol, .( split ), *
-		35 : symbol, .s, *
-		36 : symbol, .( split ), +
-		37 : symbol, .s, +
-		38 : symbol, .( split ), (
-		39 : symbol, .s, (
-		40 : symbol, .( split ), s
-		41 : symbol, .s, s
-		42 : symbol, .( split ), )
-		43 : symbol, .s, )
+		140 : 1, 4, 0
+		141 : 1, 4, 1
+		320 : 3, 2, 0
+		321 : 3, 2, 1
+		324 : 3, 2, 4
+		326 : 3, 2, 6
+		510 : 5, 1, 0
+		610 : 6, 1, 0
+		710 : 7, 1, 0
+		511 : 5, 1, 1
+		611 : 6, 1, 1
+		711 : 7, 1, 1
+		514 : 5, 1, 4
+		614 : 6, 1, 4
+		714 : 7, 1, 4
+		516 : 5, 1, 6
+		616 : 6, 1, 6
+		716 : 7, 1, 6
+		512 : 5, 1, 2
+		612 : 6, 1, 2
+		712 : 7, 1, 2
+		513 : 5, 1, 3
+		613 : 6, 1, 3
+		713 : 7, 1, 3
+		810 : 8, 1, 0
+		910 : 9, 1, 0
+		811 : 8, 1, 1
+		911 : 9, 1, 1
+		814 : 8, 1, 4
+		914 : 9, 1, 4
+		816 : 8, 1, 6
+		916 : 9, 1, 6
+		812 : 8, 1, 2
+		912 : 9, 1, 2
+		813 : 8, 1, 3
+		913 : 9, 1, 3
 	[18] 
-		0 : split, split : .concat, )
-		1 : split, split : .concat, :
-		2 : concat, .concat mult, )
-		3 : concat, .mult, )
-		4 : concat, .concat mult, :
-		5 : concat, .mult, :
-		6 : concat, .concat mult, *
-		7 : concat, .concat mult, +
-		8 : concat, .concat mult, (
-		9 : concat, .concat mult, s
-		10 : concat, .mult, *
-		11 : concat, .mult, +
-		12 : concat, .mult, (
-		13 : concat, .mult, s
-		14 : mult, .mult *, )
-		15 : mult, .mult +, )
-		16 : mult, .symbol, )
-		17 : mult, .mult *, :
-		18 : mult, .mult +, :
-		19 : mult, .symbol, :
-		20 : mult, .mult *, *
-		21 : mult, .mult +, *
-		22 : mult, .symbol, *
-		23 : mult, .mult *, +
-		24 : mult, .mult +, +
-		25 : mult, .symbol, +
-		26 : mult, .mult *, (
-		27 : mult, .mult +, (
-		28 : mult, .symbol, (
-		29 : mult, .mult *, s
-		30 : mult, .mult +, s
-		31 : mult, .symbol, s
-		32 : symbol, .( split ), )
-		33 : symbol, .s, )
-		34 : symbol, .( split ), :
-		35 : symbol, .s, :
-		36 : symbol, .( split ), *
-		37 : symbol, .s, *
-		38 : symbol, .( split ), +
-		39 : symbol, .s, +
-		40 : symbol, .( split ), (
-		41 : symbol, .s, (
-		42 : symbol, .( split ), s
-		43 : symbol, .s, s
+		135 : 1, 3, 5
+		131 : 1, 3, 1
+		315 : 3, 1, 5
+		415 : 4, 1, 5
+		311 : 3, 1, 1
+		411 : 4, 1, 1
+		314 : 3, 1, 4
+		316 : 3, 1, 6
+		414 : 4, 1, 4
+		416 : 4, 1, 6
+		515 : 5, 1, 5
+		615 : 6, 1, 5
+		715 : 7, 1, 5
+		511 : 5, 1, 1
+		611 : 6, 1, 1
+		711 : 7, 1, 1
+		514 : 5, 1, 4
+		614 : 6, 1, 4
+		714 : 7, 1, 4
+		516 : 5, 1, 6
+		616 : 6, 1, 6
+		716 : 7, 1, 6
+		512 : 5, 1, 2
+		612 : 6, 1, 2
+		712 : 7, 1, 2
+		513 : 5, 1, 3
+		613 : 6, 1, 3
+		713 : 7, 1, 3
+		815 : 8, 1, 5
+		915 : 9, 1, 5
+		811 : 8, 1, 1
+		911 : 9, 1, 1
+		814 : 8, 1, 4
+		914 : 9, 1, 4
+		816 : 8, 1, 6
+		916 : 9, 1, 6
+		812 : 8, 1, 2
+		912 : 9, 1, 2
+		813 : 8, 1, 3
+		913 : 9, 1, 3
 	[19] 
-		0 : symbol, ( split ) ., $
-		1 : symbol, ( split ) ., :
-		2 : symbol, ( split ) ., *
-		3 : symbol, ( split ) ., +
-		4 : symbol, ( split ) ., (
-		5 : symbol, ( split ) ., s
-		6 : symbol, ( split ) ., )
+		840 : 8, 4, 0
+		841 : 8, 4, 1
+		844 : 8, 4, 4
+		846 : 8, 4, 6
+		842 : 8, 4, 2
+		843 : 8, 4, 3
 	[20] 
-		0 : concat, concat mult ., )
-		1 : concat, concat mult ., :
-		2 : concat, concat mult ., *
-		3 : concat, concat mult ., +
-		4 : concat, concat mult ., (
-		5 : concat, concat mult ., s
-		6 : mult, mult .*, )
-		7 : mult, mult .+, )
-		8 : mult, mult .*, :
-		9 : mult, mult .+, :
-		10 : mult, mult .*, *
-		11 : mult, mult .+, *
-		12 : mult, mult .*, +
-		13 : mult, mult .+, +
-		14 : mult, mult .*, (
-		15 : mult, mult .+, (
-		16 : mult, mult .*, s
-		17 : mult, mult .+, s
+		335 : 3, 3, 5
+		331 : 3, 3, 1
+		334 : 3, 3, 4
+		336 : 3, 3, 6
+		525 : 5, 2, 5
+		625 : 6, 2, 5
+		521 : 5, 2, 1
+		621 : 6, 2, 1
+		524 : 5, 2, 4
+		624 : 6, 2, 4
+		526 : 5, 2, 6
+		626 : 6, 2, 6
+		522 : 5, 2, 2
+		622 : 6, 2, 2
+		523 : 5, 2, 3
+		623 : 6, 2, 3
 	[21] 
-		0 : mult, mult * ., )
-		1 : mult, mult * ., :
-		2 : mult, mult * ., *
-		3 : mult, mult * ., +
-		4 : mult, mult * ., (
-		5 : mult, mult * ., s
+		535 : 5, 3, 5
+		531 : 5, 3, 1
+		534 : 5, 3, 4
+		536 : 5, 3, 6
+		532 : 5, 3, 2
+		533 : 5, 3, 3
 	[22] 
-		0 : mult, mult + ., )
-		1 : mult, mult + ., :
-		2 : mult, mult + ., *
-		3 : mult, mult + ., +
-		4 : mult, mult + ., (
-		5 : mult, mult + ., s
+		635 : 6, 3, 5
+		631 : 6, 3, 1
+		634 : 6, 3, 4
+		636 : 6, 3, 6
+		632 : 6, 3, 2
+		633 : 6, 3, 3
 	[23] 
-		0 : symbol, ( split .), )
-		1 : symbol, ( split .), :
-		2 : symbol, ( split .), *
-		3 : symbol, ( split .), +
-		4 : symbol, ( split .), (
-		5 : symbol, ( split .), s
-		6 : split, split .: concat, )
-		7 : split, split .: concat, :
+		835 : 8, 3, 5
+		831 : 8, 3, 1
+		834 : 8, 3, 4
+		836 : 8, 3, 6
+		832 : 8, 3, 2
+		833 : 8, 3, 3
+		125 : 1, 2, 5
+		121 : 1, 2, 1
 	[24] 
-		0 : split, split : concat ., )
-		1 : split, split : concat ., :
-		2 : concat, concat .mult, )
-		3 : concat, concat .mult, :
-		4 : concat, concat .mult, *
-		5 : concat, concat .mult, +
-		6 : concat, concat .mult, (
-		7 : concat, concat .mult, s
-		8 : mult, .mult *, )
-		9 : mult, .mult +, )
-		10 : mult, .symbol, )
-		11 : mult, .mult *, :
-		12 : mult, .mult +, :
-		13 : mult, .symbol, :
-		14 : mult, .mult *, *
-		15 : mult, .mult +, *
-		16 : mult, .symbol, *
-		17 : mult, .mult *, +
-		18 : mult, .mult +, +
-		19 : mult, .symbol, +
-		20 : mult, .mult *, (
-		21 : mult, .mult +, (
-		22 : mult, .symbol, (
-		23 : mult, .mult *, s
-		24 : mult, .mult +, s
-		25 : mult, .symbol, s
-		26 : symbol, .( split ), )
-		27 : symbol, .s, )
-		28 : symbol, .( split ), :
-		29 : symbol, .s, :
-		30 : symbol, .( split ), *
-		31 : symbol, .s, *
-		32 : symbol, .( split ), +
-		33 : symbol, .s, +
-		34 : symbol, .( split ), (
-		35 : symbol, .s, (
-		36 : symbol, .( split ), s
-		37 : symbol, .s, s
+		145 : 1, 4, 5
+		141 : 1, 4, 1
+		325 : 3, 2, 5
+		321 : 3, 2, 1
+		324 : 3, 2, 4
+		326 : 3, 2, 6
+		515 : 5, 1, 5
+		615 : 6, 1, 5
+		715 : 7, 1, 5
+		511 : 5, 1, 1
+		611 : 6, 1, 1
+		711 : 7, 1, 1
+		514 : 5, 1, 4
+		614 : 6, 1, 4
+		714 : 7, 1, 4
+		516 : 5, 1, 6
+		616 : 6, 1, 6
+		716 : 7, 1, 6
+		512 : 5, 1, 2
+		612 : 6, 1, 2
+		712 : 7, 1, 2
+		513 : 5, 1, 3
+		613 : 6, 1, 3
+		713 : 7, 1, 3
+		815 : 8, 1, 5
+		915 : 9, 1, 5
+		811 : 8, 1, 1
+		911 : 9, 1, 1
+		814 : 8, 1, 4
+		914 : 9, 1, 4
+		816 : 8, 1, 6
+		916 : 9, 1, 6
+		812 : 8, 1, 2
+		912 : 9, 1, 2
+		813 : 8, 1, 3
+		913 : 9, 1, 3
 	[25] 
-		0 : symbol, ( split ) ., )
-		1 : symbol, ( split ) ., :
-		2 : symbol, ( split ) ., *
-		3 : symbol, ( split ) ., +
-		4 : symbol, ( split ) ., (
-		5 : symbol, ( split ) ., s
+		845 : 8, 4, 5
+		841 : 8, 4, 1
+		844 : 8, 4, 4
+		846 : 8, 4, 6
+		842 : 8, 4, 2
+		843 : 8, 4, 3
 [states] 
 	0 : g, 0, 1, split
 	1 : r, 1, 0, $
@@ -701,155 +582,140 @@
 	5 : g, 0, 3, mult
 	6 : r, 3, 4, $
 	7 : r, 3, 4, :
-	8 : r, 3, 4, *
-	9 : r, 3, 4, +
-	10 : r, 3, 4, (
-	11 : r, 3, 4, s
-	12 : r, 3, 4, )
-	13 : g, 0, 4, symbol
-	14 : r, 4, 7, $
-	15 : r, 4, 7, :
-	16 : r, 4, 7, *
-	17 : r, 4, 7, +
-	18 : r, 4, 7, (
-	19 : r, 4, 7, s
-	20 : r, 4, 7, )
-	21 : s, 0, 5, (
-	22 : s, 0, 6, s
-	23 : r, 6, 9, $
-	24 : r, 6, 9, :
-	25 : r, 6, 9, *
-	26 : r, 6, 9, +
-	27 : r, 6, 9, (
-	28 : r, 6, 9, s
-	29 : r, 6, 9, )
-	30 : s, 1, 7, :
-	31 : g, 2, 8, mult
-	32 : r, 8, 3, $
-	33 : r, 8, 3, :
-	34 : r, 8, 3, *
-	35 : r, 8, 3, +
-	36 : r, 8, 3, (
-	37 : r, 8, 3, s
-	38 : r, 8, 3, )
-	39 : g, 2, 4, symbol
-	40 : s, 2, 5, (
-	41 : s, 2, 6, s
-	42 : s, 3, 9, *
-	43 : r, 9, 5, $
-	44 : r, 9, 5, :
-	45 : r, 9, 5, *
-	46 : r, 9, 5, +
-	47 : r, 9, 5, (
-	48 : r, 9, 5, s
-	49 : r, 9, 5, )
-	50 : s, 3, 10, +
-	51 : r, 10, 6, $
-	52 : r, 10, 6, :
-	53 : r, 10, 6, *
-	54 : r, 10, 6, +
-	55 : r, 10, 6, (
-	56 : r, 10, 6, s
-	57 : r, 10, 6, )
-	58 : g, 5, 11, split
-	59 : g, 5, 12, concat
-	60 : r, 12, 2, )
-	61 : r, 12, 2, :
-	62 : g, 5, 13, mult
-	63 : r, 13, 4, )
-	64 : r, 13, 4, :
-	65 : r, 13, 4, *
-	66 : r, 13, 4, +
-	67 : r, 13, 4, (
-	68 : r, 13, 4, s
-	69 : g, 5, 14, symbol
-	70 : r, 14, 7, )
-	71 : r, 14, 7, :
-	72 : r, 14, 7, *
-	73 : r, 14, 7, +
-	74 : r, 14, 7, (
-	75 : r, 14, 7, s
-	76 : s, 5, 15, (
-	77 : s, 5, 16, s
-	78 : r, 16, 9, )
-	79 : r, 16, 9, :
-	80 : r, 16, 9, *
-	81 : r, 16, 9, +
-	82 : r, 16, 9, (
-	83 : r, 16, 9, s
-	84 : g, 7, 17, concat
-	85 : r, 17, 1, $
-	86 : r, 17, 1, :
-	87 : g, 7, 3, mult
-	88 : g, 7, 4, symbol
-	89 : s, 7, 5, (
-	90 : s, 7, 6, s
-	91 : s, 8, 9, *
-	92 : s, 8, 10, +
-	93 : s, 11, 18, :
-	94 : s, 11, 19, )
-	95 : r, 19, 8, $
-	96 : r, 19, 8, :
-	97 : r, 19, 8, *
-	98 : r, 19, 8, +
-	99 : r, 19, 8, (
-	100 : r, 19, 8, s
-	101 : r, 19, 8, )
-	102 : g, 12, 20, mult
-	103 : r, 20, 3, )
-	104 : r, 20, 3, :
-	105 : r, 20, 3, *
-	106 : r, 20, 3, +
-	107 : r, 20, 3, (
-	108 : r, 20, 3, s
-	109 : g, 12, 14, symbol
-	110 : s, 12, 15, (
-	111 : s, 12, 16, s
-	112 : s, 13, 21, *
-	113 : r, 21, 5, )
-	114 : r, 21, 5, :
-	115 : r, 21, 5, *
-	116 : r, 21, 5, +
-	117 : r, 21, 5, (
-	118 : r, 21, 5, s
-	119 : s, 13, 22, +
-	120 : r, 22, 6, )
-	121 : r, 22, 6, :
-	122 : r, 22, 6, *
-	123 : r, 22, 6, +
-	124 : r, 22, 6, (
-	125 : r, 22, 6, s
-	126 : g, 15, 23, split
-	127 : g, 15, 12, concat
-	128 : g, 15, 13, mult
-	129 : g, 15, 14, symbol
-	130 : s, 15, 15, (
-	131 : s, 15, 16, s
-	132 : g, 17, 8, mult
-	133 : g, 17, 4, symbol
-	134 : s, 17, 5, (
-	135 : s, 17, 6, s
-	136 : g, 18, 24, concat
-	137 : r, 24, 1, )
-	138 : r, 24, 1, :
-	139 : g, 18, 13, mult
-	140 : g, 18, 14, symbol
-	141 : s, 18, 15, (
-	142 : s, 18, 16, s
-	143 : s, 20, 21, *
-	144 : s, 20, 22, +
-	145 : s, 23, 18, :
-	146 : s, 23, 25, )
-	147 : r, 25, 8, )
-	148 : r, 25, 8, :
-	149 : r, 25, 8, *
-	150 : r, 25, 8, +
-	151 : r, 25, 8, (
-	152 : r, 25, 8, s
-	153 : g, 24, 20, mult
-	154 : g, 24, 14, symbol
-	155 : s, 24, 15, (
-	156 : s, 24, 16, s
+	8 : r, 3, 4, (
+	9 : r, 3, 4, s
+	10 : g, 0, 4, symbol
+	11 : r, 4, 7, $
+	12 : r, 4, 7, :
+	13 : r, 4, 7, (
+	14 : r, 4, 7, s
+	15 : r, 4, 7, *
+	16 : r, 4, 7, +
+	17 : s, 0, 5, (
+	18 : s, 0, 6, s
+	19 : r, 6, 9, $
+	20 : r, 6, 9, :
+	21 : r, 6, 9, (
+	22 : r, 6, 9, s
+	23 : r, 6, 9, *
+	24 : r, 6, 9, +
+	25 : s, 1, 7, :
+	26 : g, 2, 8, mult
+	27 : r, 8, 3, $
+	28 : r, 8, 3, :
+	29 : r, 8, 3, (
+	30 : r, 8, 3, s
+	31 : g, 2, 4, symbol
+	32 : s, 2, 5, (
+	33 : s, 2, 6, s
+	34 : s, 3, 9, *
+	35 : r, 9, 5, $
+	36 : r, 9, 5, :
+	37 : r, 9, 5, (
+	38 : r, 9, 5, s
+	39 : r, 9, 5, *
+	40 : r, 9, 5, +
+	41 : s, 3, 10, +
+	42 : r, 10, 6, $
+	43 : r, 10, 6, :
+	44 : r, 10, 6, (
+	45 : r, 10, 6, s
+	46 : r, 10, 6, *
+	47 : r, 10, 6, +
+	48 : g, 5, 11, split
+	49 : g, 5, 12, concat
+	50 : r, 12, 2, )
+	51 : r, 12, 2, :
+	52 : g, 5, 13, mult
+	53 : r, 13, 4, )
+	54 : r, 13, 4, :
+	55 : r, 13, 4, (
+	56 : r, 13, 4, s
+	57 : g, 5, 14, symbol
+	58 : r, 14, 7, )
+	59 : r, 14, 7, :
+	60 : r, 14, 7, (
+	61 : r, 14, 7, s
+	62 : r, 14, 7, *
+	63 : r, 14, 7, +
+	64 : s, 5, 15, (
+	65 : s, 5, 16, s
+	66 : r, 16, 9, )
+	67 : r, 16, 9, :
+	68 : r, 16, 9, (
+	69 : r, 16, 9, s
+	70 : r, 16, 9, *
+	71 : r, 16, 9, +
+	72 : g, 7, 17, concat
+	73 : r, 17, 1, $
+	74 : r, 17, 1, :
+	75 : g, 7, 3, mult
+	76 : g, 7, 4, symbol
+	77 : s, 7, 5, (
+	78 : s, 7, 6, s
+	79 : s, 8, 9, *
+	80 : s, 8, 10, +
+	81 : s, 11, 18, :
+	82 : s, 11, 19, )
+	83 : r, 19, 8, $
+	84 : r, 19, 8, :
+	85 : r, 19, 8, (
+	86 : r, 19, 8, s
+	87 : r, 19, 8, *
+	88 : r, 19, 8, +
+	89 : g, 12, 20, mult
+	90 : r, 20, 3, )
+	91 : r, 20, 3, :
+	92 : r, 20, 3, (
+	93 : r, 20, 3, s
+	94 : g, 12, 14, symbol
+	95 : s, 12, 15, (
+	96 : s, 12, 16, s
+	97 : s, 13, 21, *
+	98 : r, 21, 5, )
+	99 : r, 21, 5, :
+	100 : r, 21, 5, (
+	101 : r, 21, 5, s
+	102 : r, 21, 5, *
+	103 : r, 21, 5, +
+	104 : s, 13, 22, +
+	105 : r, 22, 6, )
+	106 : r, 22, 6, :
+	107 : r, 22, 6, (
+	108 : r, 22, 6, s
+	109 : r, 22, 6, *
+	110 : r, 22, 6, +
+	111 : g, 15, 23, split
+	112 : g, 15, 12, concat
+	113 : g, 15, 13, mult
+	114 : g, 15, 14, symbol
+	115 : s, 15, 15, (
+	116 : s, 15, 16, s
+	117 : g, 17, 8, mult
+	118 : g, 17, 4, symbol
+	119 : s, 17, 5, (
+	120 : s, 17, 6, s
+	121 : g, 18, 24, concat
+	122 : r, 24, 1, )
+	123 : r, 24, 1, :
+	124 : g, 18, 13, mult
+	125 : g, 18, 14, symbol
+	126 : s, 18, 15, (
+	127 : s, 18, 16, s
+	128 : s, 20, 21, *
+	129 : s, 20, 22, +
+	130 : s, 23, 18, :
+	131 : s, 23, 25, )
+	132 : r, 25, 8, )
+	133 : r, 25, 8, :
+	134 : r, 25, 8, (
+	135 : r, 25, 8, s
+	136 : r, 25, 8, *
+	137 : r, 25, 8, +
+	138 : g, 24, 20, mult
+	139 : g, 24, 14, symbol
+	140 : s, 24, 15, (
+	141 : s, 24, 16, s
 [table] 
 	[0] 
 		split	g1
@@ -871,51 +737,45 @@
 	[3] 
 		$	r4
 		:	r4
-		*	s9
-		+	s10
 		(	r4
 		s	r4
-		)	r4
+		*	s9
+		+	s10
 	[4] 
 		$	r7
 		:	r7
-		*	r7
-		+	r7
 		(	r7
 		s	r7
-		)	r7
+		*	r7
+		+	r7
 	[6] 
 		$	r9
 		:	r9
-		*	r9
-		+	r9
 		(	r9
 		s	r9
-		)	r9
+		*	r9
+		+	r9
 	[8] 
 		$	r3
 		:	r3
-		*	s9
-		+	s10
 		(	r3
 		s	r3
-		)	r3
+		*	s9
+		+	s10
 	[9] 
 		$	r5
 		:	r5
-		*	r5
-		+	r5
 		(	r5
 		s	r5
-		)	r5
+		*	r5
+		+	r5
 	[10] 
 		$	r6
 		:	r6
-		*	r6
-		+	r6
 		(	r6
 		s	r6
-		)	r6
+		*	r6
+		+	r6
 	[5] 
 		split	g11
 		concat	g12
@@ -933,24 +793,24 @@
 	[13] 
 		)	r4
 		:	r4
-		*	s21
-		+	s22
 		(	r4
 		s	r4
+		*	s21
+		+	s22
 	[14] 
 		)	r7
 		:	r7
-		*	r7
-		+	r7
 		(	r7
 		s	r7
+		*	r7
+		+	r7
 	[16] 
 		)	r9
 		:	r9
-		*	r9
-		+	r9
 		(	r9
 		s	r9
+		*	r9
+		+	r9
 	[7] 
 		concat	g17
 		mult	g3
@@ -970,32 +830,31 @@
 	[19] 
 		$	r8
 		:	r8
-		*	r8
-		+	r8
 		(	r8
 		s	r8
-		)	r8
+		*	r8
+		+	r8
 	[20] 
 		)	r3
 		:	r3
-		*	s21
-		+	s22
 		(	r3
 		s	r3
+		*	s21
+		+	s22
 	[21] 
 		)	r5
 		:	r5
-		*	r5
-		+	r5
 		(	r5
 		s	r5
+		*	r5
+		+	r5
 	[22] 
 		)	r6
 		:	r6
-		*	r6
-		+	r6
 		(	r6
 		s	r6
+		*	r6
+		+	r6
 	[15] 
 		split	g23
 		concat	g12
@@ -1022,7 +881,7 @@
 	[25] 
 		)	r8
 		:	r8
-		*	r8
-		+	r8
 		(	r8
 		s	r8
+		*	r8
+		+	r8
